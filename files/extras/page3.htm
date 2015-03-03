@@ -1,0 +1,760 @@
+<html>
+<head>
+<title></title>
+<link href="styles/style1.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+function firstfocus()
+{
+hidesecond();
+
+window.history.forward();
+var uid = document.theForm.pri1.focus();
+document.getElementById('gtemp').style.display = 'none';
+document.getElementById('exsm').style.display = 'none';
+document.getElementById('preview').style.display ='none';
+document.getElementById('prev').style.display ='none';
+//document.getElementById('comunity').style.display = 'none';
+//document.getElementById('mincomm').style.display = 'none';
+document.getElementById('phtype').style.display = 'none';
+//document.getElementById('caddress').style.display = 'none';
+//document.getElementById('exemption').style.display = 'none';
+document.getElementById('relx').style.display = 'none';
+return true;
+}
+
+
+// function to hide first page
+function hidefirst()
+{
+if (document.getElementById("firstBlock").style.display="block")
+{
+document.getElementById("firstBlock").style.display="none";
+}
+if (document.getElementById("firstBlock").style.display="none")
+{
+document.getElementById("secondBlock").style.display="block";
+document.getElementById("prevPage").disabled=false;
+document.getElementById("nextPage").disabled=false;
+document.getElementById("nextPage").style.display="none";
+document.getElementById("prev").style.display="inline";
+}
+return true;
+}
+
+// function to hide second page
+function hidesecond()
+{
+if (document.getElementById("secondBlock").style.display="block")
+{
+document.getElementById("secondBlock").style.display="none";
+document.getElementById("preview").style.display="none";
+}
+if (document.getElementById("secondBlock").style.display="none")
+{
+document.getElementById("firstBlock").style.display="block";
+document.getElementById("prevPage").disabled=true;
+document.getElementById("nextPage").disabled=false;
+document.getElementById("nextPage").style.display="inline";
+document.getElementById("prevPage").value="Previous Page";
+document.getElementById("prev").style.display="none";
+}
+return true;
+}
+
+function previ()
+{
+document.getElementById("secondBlock").style.display="none";
+document.getElementById("firstBlock").style.display="none";
+document.getElementById("preview").style.display="block";
+document.getElementById("prevPage").value="Home";
+
+
+
+// to be enable values are through php
+//document.getElementById("ptable").rows[0].cells[1].innerHTML = "<?php echo "candidate name"; ?>";
+//document.getElementById("ptable").rows[1].cells[1].innerHTML = "<?php echo "father name"; ?>";
+//document.getElementById("ptable").rows[2].cells[1].innerHTML = "<?php echo "dob"; ?>";
+//document.getElementById("ptable").rows[3].cells[1].innerHTML = "<?php echo "community"; ?>";
+//document.getElementById("ptable").rows[4].cells[1].innerHTML = "<?php echo "fee relexation"; ?>";
+//document.getElementById("ptable").rows[5].cells[1].innerHTML = "<?php echo "fee reason"; ?>";
+
+
+document.getElementById("ptable").rows[6].cells[1].innerHTML = document.getElementById("pri1").value+
+", "+document.getElementById("pri2").value+
+", "+document.getElementById("pri3").value+
+", "+document.getElementById("pri4").value+
+", "+document.getElementById("pri5").value+
+", "+document.getElementById("pri6").value;
+document.getElementById("ptable").rows[7].cells[1].innerHTML = document.getElementById("choice1").value
++", "+ document.getElementById("choice2").value 
++", "+ document.getElementById("choice3").value 
++", "+document.getElementById("choice4").value;
+
+if (document.theForm.gtexsm[0].checked == true)
+	{
+document.getElementById("ptable").rows[8].cells[1].innerHTML = "GT";
+	}
+else if (document.theForm.gtexsm[1].checked == true)
+	{
+document.getElementById("ptable").rows[8].cells[1].innerHTML = "RE";
+	}
+else 
+{
+document.getElementById("ptable").rows[8].style.display = "none";
+document.getElementById("ptable").rows[9].style.display = "none";
+document.getElementById("ptable").rows[10].style.display = "none";
+document.getElementById("ptable").rows[11].style.display = "none";
+
+//document.getElementById("ptable").rows[8].cells[1].innerHTML = "No";
+} 
+	
+if (document.theForm.ph[0].checked == true)
+	{
+document.getElementById("ptable").rows[12].cells[1].innerHTML = "Yes";
+	}
+else if (document.theForm.ph[1].checked == true)
+	{
+document.getElementById("ptable").rows[12].cells[1].innerHTML = "No";
+	}
+
+if (document.theForm.ageRelx[0].checked == true)
+	{
+document.getElementById("ptable").rows[13].cells[1].innerHTML = "Yes";
+	}
+else if (document.theForm.ageRelx[1].checked == true)
+	{
+document.getElementById("ptable").rows[13].cells[1].innerHTML = "No";
+	}
+else 
+{
+document.getElementById("ptable").rows[14].style.display = "none";
+}	
+	
+
+document.getElementById("ptable").rows[16].cells[1].innerHTML = document.getElementById("cadd").value+", "+
+document.getElementById("ccity").value+ ", "+
+document.getElementById("cdist").value+", "+
+document.getElementById("cstate").value;
+document.getElementById("ptable").rows[17].cells[1].innerHTML = document.getElementById("nrly").value
+return true;
+
+}
+
+
+function gtemp()
+{if (document.theForm.gtexsm[0].checked == true)
+	{
+	document.getElementById('gtemp').style.display = '';
+	}
+else
+	{
+	document.getElementById('gtemp').style.display = 'none';
+	}
+}
+// for ex-service man
+function exsm()
+{if (document.theForm.gtexsm[1].checked == true)
+	{
+	document.getElementById('exsm').style.display = '';
+	}
+else
+	{
+	document.getElementById('exsm').style.display = 'none';
+	}
+}
+
+
+
+</script>
+
+</head>
+<body onload="firstfocus()" >
+<br />
+<form name="theForm" id="theForm" action="nn.php" method="post">
+<div name="firstBlock" id="firstBlock" >
+
+
+
+<fieldset>
+<legend>Details</legend>
+<table border="1" align="center" cellspacing="0" cellpadding="5" width="90%" >
+   <tr align="center">
+      <td >Candidate's Name :</td>
+      <td ><b>ASHUTOSH SHARMA</b></td>
+      <td >Father's Name</td>
+      <td ><b>RAMPRAKASH SHARMA</b></td>
+	  
+    </tr>
+ </table>
+ <br>
+<label>CATEGORY NUMBER - Indicate your options in order of preference in Numeric Form</label>
+<br>
+<br>
+<table border="1"  cellspacing="0" cellpadding="5" width="40%" style="margin-left:50px;" > 
+<tr align="center" >
+<td width="5%" >I </td> <td ><select name="pri1" id="pri1" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+<option name="07" value="07">G</option>
+<option name="08" value="08">H</option>
+<option name="09" value="09">I</option>
+<option name="10" value="10">J</option>
+</select>
+</td>
+<td  width="5%" >II </td> <td><select name="pri2" id="pri2" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+<option name="07" value="07">G</option>
+<option name="08" value="08">H</option>
+<option name="09" value="09">I</option>
+<option name="10" value="10">J</option>
+</select>
+</td></tr>
+<tr align="center" >
+<td align="center" >III</td> <td><select name="pri3" id="pri3" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+<option name="07" value="07">G</option>
+<option name="08" value="08">H</option>
+<option name="09" value="09">I</option>
+<option name="10" value="10">J</option>
+</select>
+</td>
+<td >IV </td> <td><select name="pri4" id="pri4" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+<option name="07" value="07">G</option>
+<option name="08" value="08">H</option>
+<option name="09" value="09">I</option>
+<option name="10" value="10">J</option>
+</select>
+</td></tr>
+<tr align="center" >
+<td >V</td> <td><select name="pri5" id="pri5" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+<option name="07" value="07">G</option>
+<option name="08" value="08">H</option>
+<option name="09" value="09">I</option>
+<option name="10" value="10">J</option>
+</select>
+</td>
+<td >VI</td> <td><select name="pri6" id="pri6" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+<option name="07" value="07">G</option>
+<option name="08" value="08">H</option>
+<option name="09" value="09">I</option>
+<option name="10" value="10">J</option>
+</select>
+</td></tr>
+<tr align="center" >
+<td>VII </td> <td><select name="pri7" id="pri7" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+<option name="07" value="07">G</option>
+<option name="08" value="08">H</option>
+<option name="09" value="09">I</option>
+<option name="10" value="10">J</option>
+</select>
+</td>
+<td >VIII </td> <td><select name="pri8" id="pri8" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+<option name="07" value="07">G</option>
+<option name="08" value="08">H</option>
+<option name="09" value="09">I</option>
+<option name="10" value="10">J</option>
+</select>
+</td></tr>
+<tr align="center" >
+<td >IX </td> <td><select name="pri9" id="pri9" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+<option name="07" value="07">G</option>
+<option name="08" value="08">H</option>
+<option name="09" value="09">I</option>
+<option name="10" value="10">J</option>
+</select>
+</td>
+<td >X </td> <td><select name="pri10" id="pri10" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+<option name="07" value="07">G</option>
+<option name="08" value="08">H</option>
+<option name="09" value="09">I</option>
+<option name="10" value="10">J</option>
+</select>
+</td></tr>
+</table>
+<br>
+
+<label>CHOICE OF RAILWAY / UNIT (Wherever applicable)</label>
+<table border="0" align="center" cellspacing="0" cellpadding="5" width="90%" >
+   <tr>
+      <td >1st</td>
+      <td ><input type="text" id="choice1"> </td>
+      <td >2nd</td>
+      <td ><input type="text" id="choice2"></td>
+	  <td >3rd</td>
+      <td ><input type="text" id="choice3"></td>
+      <td >4th</td>
+      <td ><input type="text" id="choice4"></td>
+
+    </tr>
+ 
+
+</table>
+<br>
+<table align="center" border="0" width="90%" >
+
+<tr>
+    <td>Are you : </td>
+    <td colspan="2"><label>
+      <input name="gtexsm" type="checkbox" id="gtexsm" value="GT" onclick="gtemp();"/>
+        Govt. Employee</label>
+      <label>
+        <input type="checkbox" name="gtexsm" id="gtexsm" value="EX" onclick="exsm();"/>
+        Ex Servicemen</label>      </td>
+  </tr>
+      <tr>
+      <td colspan="3"><div align="center" id="gtemp">
+	  <span class="notice"> Present employment (to be filled by Railway/Centeral/State/PSU employees)</span>
+        <table width="90%" border="1" cellspacing="5" cellpadding="5">
+        <tr>
+          <th width="27%">Designation and Grade </th>
+		  <th width="13%">Date from </th>
+		  <th width="14%">Date to </th>
+		  <th width="46%">Name &amp; Address of Employer </th>
+          </tr>
+        <tr>
+          <td><div align="center">
+            <input name="gtemp1" type="text" id="gtemp1" size="35" />
+          </div></td>
+          <td><div align="center">
+            <input name="gtemp2" type="text" id="gtemp2" size="15" maxlength="10" />
+          </div></td>
+          <td><div align="center">
+            <input name="gtemp3" type="text" id="gtemp3" size="15" maxlength="10" />
+          </div></td>
+          <td><div align="center">
+            <input name="gtemp4" type="text" id="gtemp4" size="50" />
+          </div></td>
+        </tr>
+      </table></div></td>
+    </tr>
+    <tr>
+      <td colspan="3"><div align="center" id="exsm">
+	  <span class="notice"> Ex-Serviceman (EX-SM) </span>
+        <table width="90%" border="1" cellspacing="5" cellpadding="5">
+        <tr>
+          <th width="27%">Date of enrolment </th>
+          <th width="24%">Date of attestation </th>
+          <th width="26%">Date of Discharge </th>
+          <th width="23%">Length of Service </th>
+        </tr>
+        <tr>
+          <td><div align="center">
+            <input name="exsm1" type="text" id="exsm1" size="35" />
+          </div></td>
+          <td><div align="center">
+            <input name="exsm2" type="text" id="exsm2" size="15" maxlength="10" />
+          </div></td>
+          <td><div align="center">
+              <input name="exsm3" type="text" id="exsm3" size="15" maxlength="10" />
+          </div></td>
+          <td><div align="center">
+              <input name="exsm4" type="text" id="exsm4" size="15" />
+          </div></td>
+        </tr>
+      </table></div></td>
+    </tr>
+	<tr>
+    <td width="30%">Are you Person with Disabilities  </td>
+    <td ><p>
+      <label>
+      <input type="radio" id="ph"  name="ph" value="Y" onclick="document.getElementById('phtype').style.display=''" />
+        Yes</label>
+      <label>
+        <input type="radio" id="ph" name="ph" value="N" onclick="document.getElementById('phtype').style.display='none'"/>
+        No</label></p></td>
+		<td><div id="phtype" > <label> <span class="notice">( If Yes, Please Select ) :</span> 
+          <select name="ph_yes" id="ph_yes">
+          <option value="0">Select</option>
+          <option value="VH">VH</option>
+          <option value="OH">OH</option>
+          <option value="HH">HH</option>
+        </select></label>
+        </div>
+		</td>
+      </tr>
+ <tr>
+    <td>Are you seeking Age relaxation :- </td>
+    <td><label>
+      <input name="ageRelx" type="radio" value="Y" onclick="document.getElementById('relx').style.display=''"/>
+Yes</label>
+      <label>
+      <input type="radio" name="ageRelx" value="N" onclick="document.getElementById('relx').style.display='none'"/>
+No</label></td>
+    <td><div id="relx" align="center">
+	<span class="notice"> ( If Yes, Please Select ) :</span>
+	   <select name="ageReason" id="ageReason">
+      <option value="0">--Select--</option>
+      <option value="01">SC / ST</option>
+      <option value="02">OBC</option>
+      <option value="03">Ex-SM</option>
+      <option value="04">PWD</option>
+      <option value="05">Railway Employee</option>
+      <option value="06">Judicially Seprated</option>
+      <option value="07">Divorced Woman</option>
+      <option value="08">Widow</option>
+      <option value="09">J &amp; K resident</option>
+      <option value="10">Course Completed Act Appremtice</option>
+    </select></div></td>
+  </tr>
+</table>
+</fieldset>
+</div>
+<div name="secondBlock" id="secondBlock" style="height:540px;">
+<fieldset>
+<legend>Other details</legend>
+<fieldset>
+<legend>Educational Qualification :</legend>
+
+  <table width="100%" border="1" cellspacing="2" cellpadding="5">
+    <tr>
+      <td width="22%"><div align="center"><strong>Academic</strong></div></td>
+      <td width="18%"><div align="center"><strong>Qualification</strong></div></td>
+      <td width="23%"><div align="center"><strong>Univ/Board</strong></div></td>
+      <td width="10%"><div align="center" class="style1">Year of Passing </div></td>
+      <td width="17%"><div align="center"><strong>Subject</strong></div></td>
+      <td width="10%"><div align="center"><strong>Marks (%) </strong></div></td>
+    </tr>
+    <tr>
+      <td><div align="center"><strong>SSC / X / Matric</strong></div></td>
+      <td>          <div align="center">
+          <input type="text" id="a1" name="a1" />        
+      </div></td>
+      <td>          <div align="center">
+          <input name="a2" type="text" id="a2" size="35" />        
+      </div></td>
+      <td>          <div align="center">
+          <input name="a3" type="text" id="a3" size="5" maxlength="4" />        
+      </div></td>
+      <td>          <div align="center">
+          <input type="text" id="a4" name="a4" />        
+      </div></td>
+      <td>          <div align="center">
+          <input name="a5" type="text" id="a5" size="5" maxlength="5" />        
+      </div></td>
+    </tr>
+    <tr>
+      <td><div align="center"><strong>Hr. Sec./ XII / Inter </strong></div></td>
+      <td><div align="center">
+        <input type="text" id="b1" name="b1" />
+      </div></td>
+      <td><div align="center">
+        <input name="b2" type="text" id="b2" size="35" />
+      </div></td>
+      <td>
+        <div align="center">
+          <input name="b3" type="text" id="b3" size="5" maxlength="4" />
+        </div></td>
+      <td>
+        <div align="center">
+          <input type="text" id="b4" name="b4" />
+        </div></td>
+      <td>
+        <div align="center">
+          <input name="b5" type="text" id="b5" size="5" maxlength="5" />
+        </div></td>
+    </tr>
+    <tr>
+      <td><div align="center"><strong>Graduation</strong></div></td>
+      <td><div align="center">
+        <input type="text" id="c1" name="c1" />
+      </div></td>
+      <td><div align="center">
+        <input name="c2" type="text" id="c2" size="35" />
+      </div></td>
+      <td>
+        <div align="center">
+          <input name="c3" type="text" id="c3" size="5" maxlength="4" />
+        </div></td>
+      <td>
+        <div align="center">
+          <input type="text" id="c4" name="c4" />
+        </div></td>
+      <td>
+        <div align="center">
+          <input name="c5" type="text" id="c5" size="5" maxlength="5" />
+        </div></td>
+    </tr>
+    <tr>
+      <td><div align="center"><strong>Post Graduation </strong></div></td>
+      <td><div align="center">
+        <input type="text" id="d1" name="d1" />
+      </div></td>
+      <td><div align="center">
+        <input name="d2" type="text" id="d2" size="35" />
+      </div></td>
+      <td>
+        <div align="center">
+          <input name="d3" type="text" id="d3" size="5" maxlength="4" />
+        </div></td>
+      <td>
+        <div align="center">
+          <input type="text" id="d4" name="d4" />
+        </div></td>
+      <td>
+        <div align="center">
+          <input name="d5" type="text" id="d5" size="5" maxlength="5" />
+        </div></td>
+    </tr>
+    <tr>
+      <td><div align="center"><strong>Others</strong></div></td>
+      <td><div align="center">
+        <input type="text" name="e1" />
+      </div></td>
+      <td><div align="center">
+        <input name="e2" type="text" size="35" />
+      </div></td>
+      <td><div align="center">
+        <input name="e3" type="text" size="5" maxlength="4" />
+      </div></td>
+      <td>
+        <div align="center">
+          <input type="text" name="e4" />
+        </div></td>
+      <td>
+        <div align="center">
+          <input name="e5" type="text" size="5" />
+        </div></td>
+    </tr>
+  </table>
+</fieldset>
+
+    <table width="100%" border="1" cellspacing="2" cellpadding="5">
+	<tr>
+    <td>Correspondance Address</td>
+	<td><div id="caddress">Address:<br />
+        <textarea name="cadd" cols="50" rows="2" id="cadd"></textarea>
+      
+        <p> City:-
+        <input name="ccity" type="text" id="ccity" size="15" />
+        Pin Code :-
+  <input name="cpin" type="text" id="cpin" size="15" />
+      </p>
+      <p>Dist :-
+        <input name="cdist" type="text" id="cdist" size="15" />
+      State :- 
+      <select name="cstate" id="cstate" >
+        <option value="--Select--">--Select--</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+        <option value="Assam">Assam</option>
+        <option value="Bihar">Bihar</option>
+        <option value="Chhattisgarh">Chhattisgarh</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Gujarat">Gujarat</option>
+        <option value="Goa">Goa</option>
+        <option value="Haryana">Haryana</option>
+        <option value="Himachal Pradesh">Himachal Pradesh</option>
+        <option value="Jammu &amp; Kashmir">Jammu &amp; Kashmir</option>
+        <option value="Jharkhand">Jharkhand</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Kerala">Kerala</option>
+        <option value="Madhya Pradesh">Madhya Pradesh</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Manipur">Manipur</option>
+        <option value="Meghalaya">Meghalaya</option>
+        <option value="Mizoram">Mizoram</option>
+        <option value="Nagaland">Nagaland</option>
+        <option value="Orissa">Orissa</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Rajasthan">Rajasthan</option>
+        <option value="Sikkim">Sikkim</option>
+        <option value="Tamil Nadu">Tamil Nadu</option>
+        <option value="Tripura">Tripura</option>
+        <option value="Uttar Pradesh">Uttar Pradesh</option>
+        <option value="Uttarakhand">Uttarakhand</option>
+        <option value="West Bengal">West Bengal</option>
+        <option value="Andaman &amp; Nicobar">Andaman &amp; Nicobar</option>
+        <option value="Chandigarh">Chandigarh</option>
+        <option value="Dadra &amp; Nagar Haveli">Dadra &amp; Nagar Haveli</option>
+        <option value="Daman &amp; Diu">Daman &amp; Diu</option>
+        <option value="Lakshadweep">Lakshadweep</option>
+        <option value="Puducherry">Puducherry</option>
+        <option value="OTHER - not from India">OTHER - not from India</option>
+      </select>
+      </p></div>     </td></tr>
+<tr>
+	<td>Nearest Railway Station :- </td>
+	<td>
+    <input name="nrly" type="text" id="nrly" size="35" maxlength="35" /> 
+    <span class="notice">( For Issuing free Railway Pass to SC/ST candidates)</span>
+  <td>
+</tr>
+	</table>
+
+</fieldset>
+
+</div>
+<div name="preview" id="preview" >
+<table align="center" width="50%" id="ptable" name="ptable" border="1" cellpadding="5" cellspacing="0" >
+<tr>
+<td width="40%" >Name :</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Father's Name</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Date of Birth</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Community</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Fee Exemption</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Reason for Fee Exemption</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Category Preference</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Choice of Railway/Unit</td>	
+<td></td>
+</tr>
+
+<tr>
+<td>Govt. Employee</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Details of Govt Employee</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Ex-Servicemen</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Details of Ex-Servicemen</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Physically Handicapped</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Age Relexation</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Reason for Age Relaxation</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Educational Details</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Address</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Nearest Railway Station</td>
+<td></td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div name="buttons" align="center" >
+<input type="button" value="Previous Page" name="prevPage" id="prevPage" onclick="hidesecond();" > 
+<input type="button" value="Next Page" name="nextPage" id="nextPage" onclick="hidefirst();">
+<input type="button" value="Submit" name="prev" id="prev" onclick="previ();">
+</div>
+
+</form>
+</body>
+
+</html>

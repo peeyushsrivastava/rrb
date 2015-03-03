@@ -1,0 +1,51 @@
+<html>
+<head>
+<script>
+function only_numeric(f,b,d){var a;var c;if(window.event){a=window.event.keyCode;}else{if(b){a=b.which;}else{return true;}}c=String.fromCharCode(a);if((a==null)||(a==0)||(a==8)||(a==9)||(a==13)||(a==27)){return true;}else{if((("0123456789").indexOf(c)>-1)){return true;}else{if(d&&(c==".")){f.form.elements[d].focus();return false}else{return false}}}}</script>
+<script>
+function only_alpha(f,b,d){var a;var c;if(window.event){a=window.event.keyCode}else{if(b){a=b.which}else{return true;}}c=String.fromCharCode(a);if((a==null)||(a==0)||(a==8)||(a==9)||(a==13)||(a==27)||(a==32)){return true;}else{if((("abcdefghijklmnopqrstuvwxyz").indexOf(c)>-1)){return true;}else{if((("ABCDEFGHIJKLMNOPQRSTUVWXYZ").indexOf(c)>-1)){return true;}else{if(d&&(c==".")){f.form.elements[d].focus();return true;}else{return false}}}}}
+function alphanumeric(f,b,d){var a;var c;if(window.event){a=window.event.keyCode}else{if(b){a=b.which}else{return true;}}c=String.fromCharCode(a);if((a==null)||(a==0)||(a==8)||(a==9)||(a==13)||(a==27)||(a==32)){return true;}else{if((("abcdefghijklmnopqrstuvwxyz1234567890.").indexOf(c)>-1)){return true;}else{if((("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.").indexOf(c)>-1)){return true;}else{if(d&&(c==".")){f.form.elements[d].focus();return true;}else{return false}}}}}
+function alphanumeric_specialchars(f,b,d){var a;var c;if(window.event){a=window.event.keyCode}else{if(b){a=b.which}else{return true;}}c=String.fromCharCode(a);if((a==null)||(a==0)||(a==8)||(a==9)||(a==13)||(a==27)||(a==32)){return true;}else{if((("abcdefghijklmnopqrstuvwxyz1234567890.,()&-_/':;").indexOf(c)>-1)){return true;}else{if((("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.,()&-_/:;").indexOf(c)>-1)){return true;}else{if(d&&(c==".")){f.form.elements[d].focus();return true;}else{return false}}}}}</script>
+
+
+
+</head>
+
+<body>
+<h1>Input box validations </h1>
+
+
+<h4>To validate input characters only :</h4>
+<input type=text onselect="return false"
+oncut="return false"
+oncopy="return false"
+onpaste="return false"
+name=last_name id=lastName
+maxlength=30 
+placeholder=" Enter  Name"
+onKeyPress="return charactersonly_mobile(this,event)" />
+
+<br>
+
+<h4>to validate input numbers only :</h4>
+<label for=mobileNumber>Enter Mobile number</label>
+										                                        
+                                        (+91) <input name=mobileNumber
+											type=text oncut="return false" oncopy="return false"
+											onpaste="return false" style="width: 210px;" id=recordClientPhone
+											placeholder=" Enter Mobile number"
+											maxlength=10
+											onKeyPress="return numbersonly_mobile(this,event)" />
+
+<br>
+<h4>To validate input characters and numbers only only :</h4>
+<label for=board_name>Enter certificate no</label>
+<input
+style="width: 180px; margin: 2px 0 1px 0" maxlength=80
+name=board_name id=board_name type=text
+oncut="return false" oncopy="return false"
+onpaste="return false"
+onKeyPress="return charsAndNumbersOnly(this,event)" />
+
+</body>
+</html>

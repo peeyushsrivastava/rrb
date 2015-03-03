@@ -1,0 +1,2548 @@
+
+
+RRC JAIPUR GROUP D FORM SOURCE CODE
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8" />
+ 
+<link rel="shortcut icon" href=css/images/favicon.jpg />
+<link rel=stylesheet type=text/css href=css/jquerytable.css />
+<link rel=stylesheet href=css/style_accordian.css>
+<style type=text/css> 
+.error {
+	color: #ea5200;
+	font-size: 10px;
+	font-weight: bold
+}
+</style>
+<style> 
+.nationality1 {
+	display: none;
+}
+</style>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script>function numbersonly_mobile(f,b,d){var a;var c;if(window.event){a=window.event.keyCode;}else{if(b){a=b.which;}else{return true;}}c=String.fromCharCode(a);if((a==null)||(a==0)||(a==8)||(a==9)||(a==13)||(a==27)){return true;}else{if((("0123456789").indexOf(c)>-1)){return true;}else{if(d&&(c==".")){f.form.elements[d].focus();return false}else{return false}}}}</script>
+<script>function checkNationality(){
+	var b=document.getElementById("nationality");
+	var a=b.options[b.selectedIndex].text;if(a=="Others")
+	{document.getElementById("nationality1").style.display="inline";}
+	else{document.getElementById("nationality1").style.display="none";
+	document.applicationForm.other_nationality.value="";}}
+function charactersonly_mobile(f,b,d){var a;var c;if(window.event){a=window.event.keyCode}else{if(b){a=b.which}else{return true;}}c=String.fromCharCode(a);if((a==null)||(a==0)||(a==8)||(a==9)||(a==13)||(a==27)||(a==32)){return true;}else{if((("abcdefghijklmnopqrstuvwxyz").indexOf(c)>-1)){return true;}else{if((("ABCDEFGHIJKLMNOPQRSTUVWXYZ").indexOf(c)>-1)){return true;}else{if(d&&(c==".")){f.form.elements[d].focus();return true;}else{return false}}}}}
+function charsAndNumbersOnly(f,b,d){var a;var c;if(window.event){a=window.event.keyCode}else{if(b){a=b.which}else{return true;}}c=String.fromCharCode(a);if((a==null)||(a==0)||(a==8)||(a==9)||(a==13)||(a==27)||(a==32)){return true;}else{if((("abcdefghijklmnopqrstuvwxyz1234567890.").indexOf(c)>-1)){return true;}else{if((("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.").indexOf(c)>-1)){return true;}else{if(d&&(c==".")){f.form.elements[d].focus();return true;}else{return false}}}}}
+function charsNumbersAndSpecialCharsOnly(f,b,d){var a;var c;if(window.event){a=window.event.keyCode}else{if(b){a=b.which}else{return true;}}c=String.fromCharCode(a);if((a==null)||(a==0)||(a==8)||(a==9)||(a==13)||(a==27)||(a==32)){return true;}else{if((("abcdefghijklmnopqrstuvwxyz1234567890.,()&-_/':;").indexOf(c)>-1)){return true;}else{if((("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.,()&-_/:;").indexOf(c)>-1)){return true;}else{if(d&&(c==".")){f.form.elements[d].focus();return true;}else{return false}}}}}</script>
+<script>$(document).ready(function(){
+var c=$("#div1").val();
+var b=$("#div2").val();
+var a=$("#div3").val();
+$("#firstDivNext").click(function(){
+var i=/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+var j=/^[1-9]{1}[0-9]{9}$/;var k=/^[a-zA-Z \\s]*$/;
+var e=/[a-zA-Z0-9 \\.]*$/;
+$(".error").hide();
+var l=false;var g=trim1($("#recordClientEmail").val());
+var m=trim1($("#firstName").val());
+//var middleName=trim1($("#middleName").val());
+//var n=trim1($("#lastName").val());
+var o=trim1($("#fathername").val());
+var d=trim1($("#nationality").val());
+var h=trim1($("#Religion").val());
+var f=trim1($("#recordClientPhone").val());
+var date=$("#date").val();
+var month=$("#month").val();
+var year=$("#year").val();
+var sex = $("input[name=sex]:checked").length;
+var marital = $("input[name=marital_status]:checked").length;
+var community = $("input[name=community]:checked").length;
+if (sex < 1){
+                $("#errormessageSex").show();
+				l=true;
+            }
+if (marital < 1){
+ 
+                $("#errormessageMaritualStatus").show();
+				l=true;
+            }	
+if (community < 1){
+                $("#errormessageCommunity").show();
+				l=true;
+            }					
+ 
+if((date=="DD")||(month=="MONTH")||(year=="YEAR"))
+{
+ $("#errormessage").show();
+ 
+l=true;
+}
+ 
+if(m==""){
+$("#firstNameErrorMessage").show();
+l=true;
+}
+ else if((m.length<3))
+{
+$("#firstNameLengthErrorMessage").show();
+l=true;
+} 
+else{
+	if(!k.test(m)){$("#firstName").after('<span class="error"><span>Full Name accepts only characters.</span></span>');
+	l=true;
+	}
+}
+ 
+ /* if(middleName==""){
+ 
+	$("#middleNameErrorMessage").show();
+ 
+	l=true;
+	}
+	else{  
+		if(!k.test(middleName)){$("#middleName").after('<span class="error"><span>Middle Name accepts only characters.</span></span>');
+		l=true;
+		}
+	}
+ 
+if(n==""){
+	$("#lastNameErrorMessage").show();
+	l=true;
+	}
+else{if(!k.test(n)){$("#lastName").after('<span class="error"><span>Last Name accepts only characters.</span></span>');l=true;}
+} */
+ 
+if(o==""){
+	$("#fatherNameErrorMessage").show();
+	l=true;
+}
+else if((o.length<2))
+{
+$("#fatherNameLengthErrorMessage").show();
+l=true;
+} 
+else{if(!k.test(o)){$("#fathername").after('<span class="error"><span>Father Name accepts only characters.</span></span>');l=true;
+}
+}
+if(h==""){
+	$("#religionErrorMessage").show();
+	l=true;
+	}
+else{
+	if(!k.test(h)){
+		$("#Religion").after('<span class="error"><span>Religion accepts only characters.</span></span>');
+		l=true;
+		
+	}
+}
+if(g==""){
+	$("#eMailErrorMessage").show();
+	l=true;
+}
+else{
+	if(!i.test(g)){
+		$("#eMailErrorMessageValidate").show();
+		l=true;
+     }else{
+    	 $("#eMailErrorMessageValidate").hide();
+     }
+}if(f==""){
+	$("#mobileErrorMessage").show();
+	l=true;
+}
+ 
+else{
+	if(!j.test(f)){
+		$("#mobileErrorMessageValidate").show();
+		l=true;
+     }else{
+    	 $("#mobileErrorMessageValidate").hide();
+     }
+}
+if(l==true){return false;
+ 
+}else{if(!firstPagevalidation()){return false;
+ 
+	}
+	else{
+}
+}
+$("#div1").hide();$("#div2").show();$("#div3").hide();
+ 
+});
+ 
+$("#firstName").keyup(function(){
+	if(!($("#firstName").val()==""))
+	{
+	$("#firstNameErrorMessage").hide();
+	 if(!($("#firstName").val().length<3))
+		{
+		$("#firstNameLengthErrorMessage").hide();
+		}
+	}
+});
+ 
+/* $("#lastName").keyup(function(){
+	
+	if(!($("#lastName").val()==""))
+		{
+		$("#lastNameErrorMessage").hide();
+		}
+}); */
+ 
+$("#fathername").keyup(function(){
+	
+	if(!($("#fathername").val()==""))
+		{
+		$("#fatherNameErrorMessage").hide();
+		 if(!($("#fathername").val().length<2))
+			{
+			$("#fatherNameLengthErrorMessage").hide();
+			}
+		}
+});
+ 
+$("#Religion").keyup(function(){
+	
+	if(!($("#Religion").val()==""))
+		{
+		$("#religionErrorMessage").hide();
+		}
+});
+ 
+$("#sex").change(function(){
+	
+	var sex = $("input[name=sex]:checked").length;
+	
+	if(sex==1)
+		{
+		$("#errormessageSex").hide();
+		}
+});
+ 
+ 
+$("#marital").change(function(){
+	
+	var marital_status = $("input[name=marital_status]:checked").length;
+	
+	if(marital_status==1)
+		{
+		$("#errormessageMaritualStatus").hide();
+		}
+});
+ 
+ 
+$("#community").change(function(){
+	
+	var community = $("input[name=community]:checked").length;
+	
+	if(community==1)
+		{
+		$("#errormessageCommunity").hide();
+		}
+});
+ 
+$("#dateOfBirth").change(function(){
+	var date=$("#date").val();
+	var month=$("#month").val();
+	var year=$("#year").val();
+	
+	if( (!(date=="DD"))&&(!(month=="MONTH"))&&(!(year=="YEAR")))
+	{
+		$("#errormessage").hide();
+	}
+});
+ 
+$("#recordClientPhone").keyup(function(){
+	var j=/^[1-9]{1}[0-9]{9}$/;
+	var mob=$("#recordClientPhone").val().length;
+	if(!($("#recordClientPhone").val()==""))
+		{
+		$("#mobileErrorMessage").hide();
+		}
+	if((mob==0))
+	{
+		$("#mobileErrorMessageValidate").show();
+    }else{
+   	 $("#mobileErrorMessageValidate").hide();
+    }
+	
+	
+	
+});
+ 
+$("#recordClientEmail").keyup(function(){
+	
+	var i=/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+	var email=$("#recordClientEmail").val();
+	
+	if(!($("#recordClientEmail").val()==""))
+		{
+		$("#eMailErrorMessage").hide();
+		
+		}
+	
+});
+ 
+ 
+$("#secondDivNext").click(function(){
+	var e=/^[a-zA-Z \\s]*$/;
+	var g=/^[0-9]*$/;$(".error").hide();
+var d=false;
+var k=trim1($("#nearstRailwayStation").val());
+var f=trim1($("#addressforCommunication").val());
+var j=trim1($("#district").val());
+var i=trim1($("#state").val());
+var h=trim1($("#recordZipcode").val());
+ 
+if(k==""){
+	
+	$("#nearstRailwayStationErrorMessage").show();
+	d=true;
+	
+	}
+else{
+	if(!e.test(k)){
+		
+		$("#nearstRailwayStation").after('<span class="error"><span>Nearest Railway Station accepts only characters.</span></span>');
+		d=true;
+		
+		}
+}if(f==""){
+	
+	$("#addressforCommunicationErrorMessage").show();
+	d=true;
+	
+	}
+if(j==""){
+	
+	$("#districtErrorMessage").show();
+	d=true;
+	
+	}
+	else{
+		if(!e.test(j)){$("#district").after('<span class="error"><span>District accepts only characters.</span></span>');
+		d=true;
+	}
+		}
+		
+	if(i==""){
+		$("#stateErrorMessage").show();
+		d=true;
+		
+	}
+	if(h==""||h.length<6){
+		
+		$("#recordZipcodeErrorMessage").show();
+		d=true;
+		
+	}
+	else
+	{
+			if(!g.test(h)){$("#recordZipcode").after('<span class="error"><span>Pincode accepts only numbers.</span></span>');
+			d=true;
+			}
+			}
+	if(d==true){return false}else{if(!secondPagevalidation()){
+		return false;
+		}else{}
+	}$("#div1").hide();$("#div2").hide();$("#div3").show();
+	
+	
+	
+	
+	});
+	
+$("#nearstRailwayStation").keyup(function(){
+	
+	if(!($("#nearstRailwayStation").val()==""))
+		{
+		$("#nearstRailwayStationErrorMessage").hide();
+		}
+});
+ 
+$("#addressforCommunication").keyup(function(){
+	
+	if(!($("#addressforCommunication").val()==""))
+		{
+		$("#addressforCommunicationErrorMessage").hide();
+		}
+});	
+$("#district").keyup(function(){
+	
+	if(!($("#district").val()==""))
+		{
+		$("#districtErrorMessage").hide();
+		}
+});	
+$("#state").change(function(){
+	
+	if(!($("#state").val()=="")  )
+		{
+		$("#stateErrorMessage").hide();
+		}
+});	
+$("#recordZipcode").keyup(function(){
+ 
+	if(!($("#recordZipcode").val()=="")){
+		
+		
+		$("#recordZipcodeErrorMessage").hide();
+		
+	}
+ 
+	});
+ 
+ 
+	
+	
+	$("#thirdDivNext").click(function(){
+		$(".error").hide();
+			var d=false,min_qualificatins=false;;
+		var education_qualification_ids = $("input[name=education_qualification_ids]:checked").length;
+		if (education_qualification_ids < 1){
+				$("#education_qualification_idsErrorMessage").show();
+				d=true;
+	        }
+		if(d==true){return false;}else{	
+			// To check SSLC/Matric or ITI selected or not
+			$('input:checkbox[name=education_qualification_ids]:checked').each(function() 
+			    {
+			       var selected_qulification= $(this).val();
+			       if(selected_qulification==1 || selected_qulification==3)
+			    	   {
+			    	   min_qualificatins=true;
+			    	   }
+			    });
+			if(min_qualificatins==false)
+			{
+			 $("#education_min_qualification_ErrorMessage").show();
+			 return false;
+			}else{
+				if(!thirdPagevalidation()){
+					return false;
+				}
+			}
+		}
+		$("#div1").hide();$("#div2").hide();$("#div3").hide();$("#div4").show();
+		});
+		// Auto hiding functions;
+		$("#education_qualification_ids").change(function(){
+			var education_qualification_ids = $("input[name=education_qualification_ids]:checked").length;
+			if(education_qualification_ids==1)
+				{ $("#education_qualification_idsErrorMessage").hide(); }
+			$('input:checkbox[name=education_qualification_ids]:checked').each(function() 
+				    {
+				       var selected_qulification= $(this).val();
+				       if(selected_qulification==1 || selected_qulification==3)
+				    	   { $("#education_min_qualification_ErrorMessage").hide(); }
+				    });
+		});		
+		
+		$("#fourthDivNext").click(function()
+				{
+			var e=/^[a-zA-Z \\s]*$/;
+			$(".error").hide();
+			var d=false;
+			var g=trim1($("#personalMoal").val());
+			var f=trim1($("#personalMoal2").val());
+			var ex_serviceman = $("input[name=ex_serviceman]:checked").length;
+			var pwd = $("input[name=pwd]:checked").length;
+			var widow_women = $("input[name=widow_women]:checked").length;
+			var economic_weaker = $("input[name=economic_weaker]:checked").length;
+			var minority = $("input[name=minority]:checked").length;
+			var staff_quasi = $("input[name=staff_quasi]:checked").length;
+			var resident_jk = $("input[name=resident_jk]:checked").length;
+			var railway_employee_service = $("input[name=railway_employee_service]:checked").length;
+			var govt_employee_service = $("input[name=govt_employee_service]:checked").length;
+			
+			
+			if (ex_serviceman < 1){
+				$("#ex_servicemanErrorMessage").show();
+				d=true;
+	        }
+			if (pwd < 1){
+				$("#pwdErrorMessage").show();
+				d=true;
+	        }
+			if (widow_women < 1){
+				$("#widow_womenErrorMessage").show();
+				d=true;
+	        }
+			
+			
+			if (economic_weaker < 1){
+				$("#economic_weakerErrorMessage").show();
+				d=true;
+	        }
+			
+			if (minority < 1){
+				$("#minorityErrorMessage").show();
+				d=true;
+	        }
+			
+			if (staff_quasi < 1){
+				$("#staff_quasiErrorMessage").show();
+				d=true;
+	        }
+			if (resident_jk < 1){
+				$("#resident_jkErrorMessage").show();
+				d=true;
+	        }
+			if (railway_employee_service < 1){
+				$("#railway_employee_serviceErrorMessage").show();
+				d=true;
+	        }
+			if (govt_employee_service < 1){
+				$("#govt_employee_serviceErrorMessage").show();
+				d=true;
+	        }
+			
+	if(g==""){
+		
+		/* $("#personalMoal").after('<span style="color: red" class="error"> <span>Please Enter Personal marks of Identification.</span></span>'); */
+	$("#personalMoalErrorMessage").show();
+		
+		d=true;
+	
+	
+	}else{
+	if(!e.test(g)){
+		
+		$("#personalMoal").after('<span class="error"><span>Personal marks of Identification accepts only characters.</span></span>');
+		d=true;
+		}
+	}
+	if(f=="")
+	{
+		
+		/* $("#personalMoal2").after('<span style="color: red" class="error"> <span>Please Enter Personal marks of Identification.</span></span>'); */
+		
+		$("#personalMoal2ErrorMessage").show();
+		d=true
+		
+	}else
+	{
+			if(!e.test(f)){$("#personalMoal2").after('<span class="error"><span>Personal marks of Identification accepts only characters.</span></span>');
+			d=true;}}if(d==true){return false}
+			else{}
+			
+				
+				});
+		
+		$("#personalMoal").keyup(function(){
+			
+			if(!($("#personalMoal").val()==""))
+				{
+				$("#personalMoalErrorMessage").hide();
+				}
+		});	
+		
+$("#personalMoal2").keyup(function(){
+			
+			if(!($("#personalMoal2").val()==""))
+				{
+				$("#personalMoal2ErrorMessage").hide();
+				}
+		});	
+		
+$("#ex_serviceman").change(function(){
+	
+	var ex_serviceman = $("input[name=ex_serviceman]:checked").length;
+	
+	if(ex_serviceman==1)
+		{
+		$("#ex_servicemanErrorMessage").hide();
+		}
+});		
+		
+$("#pwd").change(function(){
+	
+	var pwd = $("input[name=pwd]:checked").length;
+	
+	if(pwd==1)
+		{
+		$("#pwdErrorMessage").hide();
+		}
+});				
+		
+$("#widow_women").change(function(){
+	
+	var widow_women = $("input[name=widow_women]:checked").length;
+	
+	if(widow_women==1)
+		{
+		$("#widow_womenErrorMessage").hide();
+		}
+});		
+$("#economic_weaker").change(function(){
+	
+	var economic_weaker = $("input[name=economic_weaker]:checked").length;
+	
+	if(economic_weaker==1)
+		{
+		$("#economic_weakerErrorMessage").hide();
+		}
+});		
+$("#minority").change(function(){
+	
+	var minority = $("input[name=minority]:checked").length;
+	
+	if(minority==1)
+		{
+		$("#minorityErrorMessage").hide();
+		}
+});		
+$("#staff_quasi").change(function(){
+	
+	var staff_quasi = $("input[name=staff_quasi]:checked").length;
+	
+	if(staff_quasi==1)
+		{
+		$("#staff_quasiErrorMessage").hide();
+		}
+});	
+$("#resident_jk").change(function(){
+	
+	var resident_jk = $("input[name=resident_jk]:checked").length;
+	
+	if(resident_jk==1)
+		{
+		$("#resident_jkErrorMessage").hide();
+		}
+});	
+$("#railway_employee_service").change(function(){
+	
+	var railway_employee_service = $("input[name=railway_employee_service]:checked").length;
+	
+	if(railway_employee_service==1)
+		{
+		$("#railway_employee_serviceErrorMessage").hide();
+		}
+});	
+	$("#govt_employee_service").change(function(){
+		
+		var govt_employee_service = $("input[name=govt_employee_service]:checked").length;
+		
+		if(govt_employee_service==1)
+			{
+			$("#govt_employee_serviceErrorMessage").hide();
+			}
+	});			
+		
+		$("#firstDivBack").click(function(){$("#div1").show();$("#div2").hide();$("#div3").hide();$("#div4").hide()});$("#secondDivBack").click(function(){$("#div1").hide();$("#div2").show();$("#div3").hide();$("#div4").hide()});$("#thirdDivBack").click(function(){$("#div1").hide();$("#div2").hide();$("#div3").show();$("#div4").hide()})});
+		var dtCh="-";var minYear=1900;var maxYear=2100;
+		function isInteger(b){var a;for(a=0;a<b.length;a++){var d=b.charAt(a);if(((d<"0")||(d>"9"))){return false}}return true;}
+		function stripCharsInBag(d,e){var b;var a="";for(b=0;b<d.length;b++){var f=d.charAt(b);if(e.indexOf(f)==-1){a+=f}}return a}
+		function daysInFebruary(a){return(((a%4==0)&&((!(a%100==0))||(a%400==0)))?29:28)}
+		function DaysArray(b){for(var a=1;a<=b;a++){this[a]=31;if(a==4||a==6||a==9||a==11){this[a]=30}if(a==2){this[a]=29}}return this}
+		function checkDate(myDayStr,myMonthStr,myYearStr) {
+		/* Using form values, create a new date object
+		using the setFullYear function */
+		var myDate = new Date();
+		myDate.setFullYear( myYearStr, (myMonthStr-1), myDayStr );
+		if ( myDate.getMonth() != (myMonthStr-1) ) {
+		  return false;
+		} else {
+		return true;
+		}
+		}
+		function trim1(a){return a.replace(/^\s\s*/,"").replace(/\s\s*$/,"")}
+		function getCheckedRadio(c){for(var b=0;b<c.length;b++){var a=c[b];if(a.checked){return a}}return undefined}
+		function evalRadioButton(b){for(var a=0;a<b.length;a++){if(b[a].checked){break}}if(a==b.length){return false}else{return true;}}
+		function evalCheckBoxGroup(b){for(var a=0;a<b.length;a++){if(b[a].checked){break}}if(a==b.length){return false}else{return true;}}
+		function isNumber(a){return !isNaN(parseInt(a))&&isFinite(a)}
+		
+function firstPagevalidation(){
+	var b=document.getElementById("nationality");
+	var a=b.options[b.selectedIndex].text;
+	if(a=="Others"){
+		if(trim1(document.applicationForm.other_nationality.value)==""){
+			alert("In Others - Please specify your nationality");return false}
+		}
+	var n=document.applicationForm.dob_dd.value;var g=document.applicationForm.dob_mm.value;var f=document.applicationForm.dob_yyyy.value;
+	var k=String(f)+String(g)+String(n);
+	if(checkDate(n,g,f)==false){alert("Please select valid Date of birth");return false;}
+	else{
+		var checkDOB=19960101;
+		if(!datesComparison(k,checkDOB))
+		{alert("Date of birth should be less than or equal to 01-01-1996");return false;
+		}
+	}
+	var b=getCheckedRadio(document.applicationForm.community);
+	if(b){
+		var h=b.value;
+		if(h!="UR"){
+			if(trim1(document.applicationForm.community_certficate_no.value)=="")
+			{alert("Please Enter Certificate Number for Community Certificate");return false}
+			else{var c=new RegExp("^[a-zA-Z0-9 \\\n.,()&-_/:;]*$");
+			var m=trim1(document.applicationForm.community_certficate_no.value).match(c);
+			if(m==null){alert("Community Certificate Number accepts characters,numbers and .,()&_/-:;");
+			return false}}
+			if(document.applicationForm.community_dob_dd.value=="DD"||document.applicationForm.community_dob_mm.value=="MONTH"||document.applicationForm.community_dob_yyyy.value=="YEAR")
+			{alert("Please Select Date of Issue for Community Certificate");return false}else{var a=document.applicationForm.community_dob_dd.value;
+			var i=document.applicationForm.community_dob_mm.value;var j=document.applicationForm.community_dob_yyyy.value;
+			if(checkDate(a,i,j)==false){alert("Please Select Valid Date of Issue for Community Certificate");
+			return false;}
+			else{
+				var e=String(j)+String(i)+String(a);
+				var endDate=20140114;
+				if(!datesComparison1(k,e))
+				{
+					alert("Community Certificate Date of Issue should be Greater than Date of birth.");return false;
+				}else if(!datesComparison1(e,endDate))
+				{
+					alert("Community Certificate Date of Issue should be less than or equal to 13-01-2014.");return false;
+				}
+			}
+			}if(trim1(document.applicationForm.community_place_issue.value)==""){alert("Please Enter Place of Issue for Community Certificate");
+			return false}else{var c=new RegExp("^[a-zA-Z0-9 \\.]*$");var m=trim1(document.applicationForm.community_place_issue.value).match(c);
+			if(m==null){alert("Community Certificate Place of Issue accepts characters,numbers and .,()&_/-:;");return false}}
+			if(trim1(document.applicationForm.community_assured_by.value)==""){alert("Please Enter Name of issuing authority for Community Certificate");return false}
+			else{var c=new RegExp("^[a-zA-Z0-9 \\.]*$");var m=trim1(document.applicationForm.community_assured_by.value).match(c);
+			if(m==null){alert("Community Certificate Name of issuing authority accepts characters,numbers and .,()&_/-:;");return false}}
+			}
+		}
+	<!-- Community Certificate Validations end -->
+	
+	return true;
+}
+ 
+function datesComparison(b,a){if(b>a){return false;}return true;}
+ 
+function datesComparison1(b,a){if(b>=a){return false;}return true;}
+ 
+function secondPagevalidation(){if((trim1(document.applicationForm.address.value).indexOf("<") !=-1)||(trim1(document.applicationForm.address.value).indexOf(">") !=-1))
+{alert("Address will not accept < and > symbols");return false}return true;}
+function thirdPagevalidation(){
+	var edu_certficate_no_value=trim1(document.applicationForm.edu_certficate_no.value);
+	if(edu_certficate_no_value=="")
+	{alert("Please Enter Certificate Number for Education Qualification");return false;}
+	else{var d=new RegExp("^[a-zA-Z0-9 \\\n.,()&-_/:;]*$");
+	var m=edu_certficate_no_value.match(d);
+	if(m==null){alert("Education Qualification Certificate Number accepts characters,numbers and .,()&_/-:;");return false}}
+	
+	var eqdd=document.applicationForm.edu_date_issue_dd.value;var eqdm=document.applicationForm.edu_date_issue_mm.value;var eqdy=document.applicationForm.edu_date_issue_yyyy.value;
+	if(eqdd=="DD"||eqdm=="MONTH"||eqdy=="YEAR")
+	{alert("Please Select Date of Issue for Education Qualification Certificate");return false}
+	else{
+	if(checkDate(eqdd,eqdm,eqdy)==false){alert("Please Select Valid Date of Issue for Education Qualification Certificate");return false}
+	else{var u=document.applicationForm.dob_dd.value;var o=document.applicationForm.dob_mm.value;var j=document.applicationForm.dob_yyyy.value;
+	var b=String(j)+String(o)+String(u);var t=String(eqdy)+String(eqdm)+String(eqdd);
+	if(!datesComparison1(b,t)){alert("Education Qualification Certificate Date of Issue should be Greater than Date of birth.");return false}}}
+	
+	
+	var board_name_value=trim1(document.applicationForm.board_name.value);
+	if(board_name_value=="")
+	{alert("Please Enter Board/Institution for Education Qualification Certificate");return false}
+	else{var d=new RegExp("^[a-zA-Z0-9 \\\n.,()&-_/:;]*$");
+	var m=board_name_value.match(d);
+	if(m==null){alert("Education Qualification Certificate Board/Institution accepts characters,numbers and .,()&_/-:;");return false}}
+	
+	return true;
+	}
+	
+	
+function fourthPagevalidation(){
+	var u=document.applicationForm.dob_dd.value;var o=document.applicationForm.dob_mm.value;var j=document.applicationForm.dob_yyyy.value;
+	var dob_value=String(j)+String(o)+String(u);
+	var checkDOB=19960101;
+	if(!datesComparison(dob_value,checkDOB))
+	{alert("Date of birth should be less than or equal to 01-01-1996");return false;
+	}else{
+	var community=getCheckedRadio(document.applicationForm.community);
+	var v=getCheckedRadio(document.applicationForm.ex_serviceman);
+	
+	if(v){var i=v.value;if(i=="true"){
+		
+		if(trim1(document.applicationForm.exman_certficate_no.value)==""){alert("Please Enter Certificate Number for Ex-Serviceman Certificate");return false}
+		else{var d=new RegExp("^[a-zA-Z0-9 \\\n.,()&-_/:;]*$");var m=trim1(document.applicationForm.exman_certficate_no.value).match(d);
+		if(m==null){alert("Ex-Serviceman Certificate Number accepts characters,numbers and .,()&_/-:;");return false}}
+		if(document.applicationForm.exman_enrollment_dd.value=="DD"||document.applicationForm.exman_enrollment_mm.value=="MONTH"||document.applicationForm.exman_enrollment_yyyy.value=="YEAR")
+		{alert("Please Select Enrollment Date for Ex-Serviceman Certificate");return false}
+		else{var f=document.applicationForm.exman_enrollment_dd.value;var a=document.applicationForm.exman_enrollment_mm.value;var n=document.applicationForm.exman_enrollment_yyyy.value;
+		if(checkDate(f,a,n)==false){alert("Please Select Valid Enrollment Date for Ex-Serviceman Certificate");return false}
+		else{
+		var t=String(n)+String(a)+String(f);
+		if(!datesComparison1(dob_value,t)){alert("Date of Enrollment Date in Defense should be Greater than Date of birth for Ex-Serviceman Certificate ");return false}}}
+		
+		/* if(trim1(document.applicationForm.exman_service.value)==""){alert("Please Enter Total Duration of service for Ex-Serviceman Certificate");return false}
+		else{var d=new RegExp("^[a-zA-Z0-9 \\.]*$");var m=trim1(document.applicationForm.exman_service.value).match(d);if(m==null){alert("Ex-Serviceman Certificate Total Duration of service accepts characters,numbers and .,()&_/-:;");return false}}
+		 */
+		 var exman_service=document.applicationForm.exman_service.value;
+		 if(exman_service=="0"){alert("Please Select Total Duration of service  for Ex-Serviceman Certificate");return false;}
+		
+		 var erd=document.applicationForm.exman_retirement_dd.value;var erm=document.applicationForm.exman_retirement_mm.value;var ery=document.applicationForm.exman_retirement_yyyy.value;
+		 var rd=String(ery)+String(erm)+String(erd);
+		 if(erd=="DD" && erm=="MONTH" && ery=="YEAR")
+		{alert("Please Select Retirement Date for Ex-Serviceman Certificate");return false}
+		else if(checkDate(erd,erm,ery)==false){alert("Please Select Valid Retirement Date for Ex-Serviceman Certificate");return false}
+		else if(!datesComparison1(dob_value,rd)){alert("Retirement Date should be Greater than Date of birth for Ex-Serviceman Certificate ");return false}
+		else if(!datesComparison1(t,rd)){alert("Retirement Date should be Greater than Enrollment Date in Defense for Ex-Serviceman Certificate ");return false}
+		else{
+			var nd=20131214;
+			if(!datesComparison(rd,nd)){alert("Retirement Date should be less than Notification start date for Ex-Serviceman Certificate ");return false}
+		}
+    }else{
+	if(community){
+		var community_value=community.value;
+		var dob_checked_status=false;
+		
+		var pwd=getCheckedRadio(document.applicationForm.pwd);
+		if(pwd){var pwd_value=pwd.value;if(pwd_value=="true"){
+			if(community_value!="UR"){
+				if(community_value=="OBC"){
+					dob_checked_status=true;
+					var checkDOB=19680101;
+					if(!datesComparison(checkDOB,dob_value))
+					{alert("Date of birth should be greater than or equal to 01-01-1968 for Person with Disabilities and OBC Community");return false;
+					}
+				} else if(community_value=="SC" || community_value=="ST"){
+					dob_checked_status=true;
+					var checkDOB=19660101;
+					if(!datesComparison(checkDOB,dob_value))
+					{alert("Date of birth should be greater than or equal to 01-01-1966 for Person with Disabilities and SC/ST Community");return false;
+					}
+				}
+			}else{
+				dob_checked_status=true;
+				var checkDOB=19710101;
+				if(!datesComparison(checkDOB,dob_value))
+				{alert("Date of birth should be greater than or equal to 01-01-1971 for Person with Disabilities and UR Community");return false;
+				}
+			}
+		}}
+		
+		if(!dob_checked_status){
+		var resident_jk=getCheckedRadio(document.applicationForm.resident_jk);
+		if(resident_jk){var resident_jk_value=resident_jk.value;if(resident_jk_value=="true"){
+			if(community_value!="UR"){
+				if(community_value=="OBC"){
+					dob_checked_status=true;
+					var checkDOB=19730101;
+					if(!datesComparison(checkDOB,dob_value))
+					{alert("Date of birth should be greater than or equal to 01-01-1973 for Jammu & Kashmir and OBC Community candidate");return false;
+					}
+				} else if(community_value=="SC" || community_value=="ST"){
+					dob_checked_status=true;
+					var checkDOB=19710101;
+					if(!datesComparison(checkDOB,dob_value))
+					{alert("Date of birth should be greater than or equal to 01-01-1971 for Jammu & Kashmir and SC/ST Community candidate");return false;
+					}
+				}
+			}else{
+				dob_checked_status=true;
+				var checkDOB=19760101;
+				if(!datesComparison(checkDOB,dob_value))
+				{alert("Date of birth should be greater than or equal to 01-01-1976 for Jammu & Kashmir and UR Community candidate");return false;
+				}
+			}
+		}}
+		}
+		
+		if(!dob_checked_status){
+			if(community_value=="UR"){
+				dob_checked_status=true;
+				var checkDOB=19810101;
+				if(!datesComparison(checkDOB,dob_value))
+				{alert("Date of birth should be greater than or equal to 01-01-1981 for UR Community");return false;
+				}
+			} 
+			else if(community_value=="OBC"){
+				dob_checked_status=true;
+				var checkDOB=19780101;
+				if(!datesComparison(checkDOB,dob_value))
+				{alert("Date of birth should be greater than or equal to 01-01-1978 for OBC Community");return false;
+				}
+			} 
+			else if(community_value=="SC" || community_value=="ST"){
+				dob_checked_status=true;
+				var checkDOB=19760101;
+				if(!datesComparison(checkDOB,dob_value))
+				{alert("Date of birth should be greater than or equal to 01-01-1976 for SC/ST Community");return false;
+				}
+			}
+		}
+	} 
+	
+	
+	}}
+	
+	
+	
+	if(pwd){var p=pwd.value;if(p=="true"){
+		if(!evalCheckBoxGroup(document.applicationForm.pwd_cat)){
+			alert("Please Any Disabilities");return false;
+		}if(trim1(document.applicationForm.pwd_certficate_no.value)==""){
+			alert("Please Enter Disabilities Certificate Number");return false;
+		}else{var d=new RegExp("^[a-zA-Z0-9 \\\n.,()&-_/:;]*$");
+			var m=trim1(document.applicationForm.pwd_certficate_no.value).match(d);
+			if(m==null){alert("Disabilities Certificate Number accepts characters,numbers and .,()&_/-:;");return false;}
+		}
+		var e=document.applicationForm.pwd_dob_dd.value;var x=document.applicationForm.pwd_dob_mm.value;var l=document.applicationForm.pwd_dob_yyyy.value;
+		if(e=="DD"||x=="MONTH"||l=="YEAR"){
+			alert("Please Select Date of Issue of Disabilities Certificate");return false}
+		else{if(checkDate(e,x,l)==false){
+			alert("Please Select Valid Date of Issue of Disabilities Certificate");return false}
+			else{var w=String(l)+String(x)+String(e);
+			    if(!datesComparison(dob_value,w)){alert("Disabilities Certificate Date of Issue should be Greater than Date of birth.");return false;}
+			    }
+	   }if(trim1(document.applicationForm.pwd_place_issue.value)==""){
+		   alert("Please Enter Place of Issue of Disabilities Certificate");return false;}
+	   else{var d=new RegExp("^[a-zA-Z0-9 \\.]*$");
+	   		var m=trim1(document.applicationForm.pwd_place_issue.value).match(d);
+	   		if(m==null){alert("Disabilities Certificate Place of Issue accepts characters,numbers and .,()&_/-:;");return false}
+	   	   }
+	   if(trim1(document.applicationForm.pwd_assured_by.value)==""){
+		   alert("Please Enter Name of issuing authority for Persons with Disabilities  Certificate");return false}
+	   else{var d=new RegExp("^[a-zA-Z0-9 \\.]*$");
+	   		var m=trim1(document.applicationForm.pwd_assured_by.value).match(d);
+	   		if(m==null){alert("Persons with Disabilities Certificate Name of issuing authority accepts characters,numbers and .,()&_/-:;");return false}
+	   	   }
+	}}
+	
+	var c=getCheckedRadio(document.applicationForm.railway_employee_service);
+	var k=getCheckedRadio(document.applicationForm.govt_employee_service);
+	var g=c.value;var q=k.value;
+	if(g=="true"&&q=="true"){alert("Please Select Serving Railway Employees or  Central/State Govt. Employees ");return false}
+  }
+return true;}
+       
+		function validation(){
+        	if(firstPagevalidation()){
+        		if(secondPagevalidation()){
+        			if(thirdPagevalidation()){
+        				if(fourthPagevalidation()){
+        					return true;}}}}
+        	return false;
+        	return true;}
+			function check(){
+				var c=getCheckedRadio(document.applicationForm.community);if(c){var e=c.value;if(e!="UR"){showDiv(2)}}var d=getCheckedRadio(document.applicationForm.ex_serviceman);if(d){var a=d.value;if(a=="true"){showDiv(5)}}var f=getCheckedRadio(document.applicationForm.pwd);if(f){var b=f.value;if(b=="true"){showDiv(3)}}}function goToInstructions(){document.location.href="applicationHome"}
+				</script>
+	<script type="text/javascript">
+      function limitTypingData(obj, limit) {
+        // Other browsers may have support for maxlength attribute
+        if (navigator.appName == 'Microsoft Internet Explorer') {
+          if (obj.value.length > (limit - 1)) {
+    
+            if (document.selection && document.selection.createRange) {
+              obj.focus();
+              // If only text has been selected, allow to type once
+              if (document.selection.createRange().text.length > 0) {
+                return true;
+              }
+            }
+            return false;
+          }
+        }
+      }
+    </script>			
+</head>
+<body onload="check(); checkNationality();"  oncontextmenu="return true;">
+	<div id=wrapper>
+		<script type="text/javascript"></script>
+<div class="header">
+<div class="headerInner">
+<div class="headerInnerLeft"><img alt="Southern Railway" src="css/images/southern_railway.jpg" /></div>
+<div class="headerInnerRight">
+<table>
+<tr><td class="logotitle">IROAMS <span style="font-size:14pt;">(INDIAN RAILWAY ONLINE APPLICATION MANAGEMENT SYSTEM)</span></td></tr>
+<tr><td class="logotitleIntiative">North Western Railway, Ministry of Railways, Government of India</td></tr>
+</table>
+</div>
+</div>
+</div>
+<noscript>
+<style type="text/css">#divpageOuter{display:none}</style>
+<div class="disablejavscriptText">Javascript is disabled in your browser, please enable javascript and proceed.</div>
+</noscript>
+		<div id=divpageOuter>
+			<table class="display">
+				
+<tr>
+			<td colspan="2" class="center rightbodernoneclass headerFont">
+			  RAILWAY RECRUITMENT CELL - NORTH WESTERN RAILWAY, JAIPUR <br/>
+			   Employment Notification Number : RRC 03 / 2013 dated 14-12-2013  <br/>
+				Recruitment to Posts in Pay band - 1 (Rs 5,200 - 20,200) with grade pay of Rs.1,800/- in North Western Railway </td>
+		</tr>
+		<tr>
+			<td class="center bottombodernoneclass tdBigFont">Opening date : 14-12-2013</td>
+			<td class="center bottombodernoneclass tdBigFont">Closing date : 13-01-2014 at 17:00 hrs</td>
+		</tr>
+ 
+			</table>
+			<div class="clear"></div>
+			<form name=applicationForm id=applicationForm method=post
+				action=applicationPreview>
+				<input type=hidden name=recordRequestPrimaryServiceID
+					id=recordRequestPrimaryServiceID value=100 /> <input type=hidden
+					name=recordClientServices id=recordClientServices value=1,3 />
+				<div id=div1>
+					<div>
+						<fieldset>
+							<legend>
+								<span class=legendActiveColor>Personal Details</span> <img
+									src=css/images/leagend_arrow_image.png /> <span
+									class=legendDeActiveColor>Address</span> <img
+									src=css/images/leagend_arrow_image.png /> <span
+									class=legendDeActiveColor>Education Details</span> <img
+									src=css/images/leagend_arrow_image.png /> <span
+									class=legendDeActiveColor>Identification and Additional
+									Details</span>
+							</legend>
+							<table class="display">
+								<tbody>
+									<input type=hidden name=requestFrom value="apllicationform" />
+									<tr>
+										<td width=30%><label for=firstName class=input>Enter
+												Full Name</label></td>
+										<td class=rightbodernoneclass>
+                                        <div class="rightsideErrorClassW">
+                                        <div class="rightsideErrorClassL">
+                                        <input type=text
+											oncut="return false" oncopy="return false"
+											onpaste="return false" name=first_name id=firstName
+											maxlength=50 class="inputclass pageRequired"
+											placeholder=" Enter Full Name"
+											onKeyPress="return charactersonly_mobile(this,event)" />
+											</div>
+                                            <div class="rightsideErrorClassR">
+											<div id="firstNameErrorMessage" class="error" style="display: none;">Please Enter Full Name.</div>
+											<div id="firstNameLengthErrorMessage" class="error" style="display: none;">Full name should contain at least 3 characters.</div>
+                                            </div>
+                                            </div>
+											</td>
+									</tr>
+									<!-- <tr>
+										<td width=30%><label for=lastName class=input>Enter
+												Middle Name</label></td>
+										<td class=rightbodernoneclass>
+                                        <div class="rightsideErrorClassW">
+                                        <div class="rightsideErrorClassL">
+                                        <input type=text
+											oncut="return false" oncopy="return false"
+											onpaste="return false" name=middle_name id=middleName
+											maxlength=30 class="inputclass pageRequired"
+											placeholder=" Enter Middle Name"
+											onKeyPress="return charactersonly_mobile(this,event)" />
+                                            </div>
+                                            <div class="rightsideErrorClassR">
+											<div id="middleNameErrorMessage" class="error" style="display: none;">Please Enter Middle Name.</div>
+                                            </div>
+                                            </div>
+											</td>
+									</tr>
+									<tr>
+										<td width=30%><label for=lastName class=input>Enter
+												Last Name</label></td>
+										<td class=rightbodernoneclass>
+                                        <div class="rightsideErrorClassW">
+                                        <div class="rightsideErrorClassL">
+                                        <input type=text
+											oncut="return false" oncopy="return false"
+											onpaste="return false" name=last_name id=lastName
+											maxlength=30 class="inputclass pageRequired"
+											placeholder=" Enter Last Name"
+											onKeyPress="return charactersonly_mobile(this,event)" />
+                                            </div>
+                                            <div class="rightsideErrorClassR">
+											<div id="lastNameErrorMessage" class="error" style="display: none;">Please Enter Last Name.</div>
+                                            </div>
+                                            </div>
+											</td>
+									</tr> -->
+									
+									<tr>
+										<td width=30%><label for=fathername class=input>Enter
+												Father's / Husband's Name</label></td>
+										<td class=rightbodernoneclass>
+                                        <div class="rightsideErrorClassW">
+                                        <div class="rightsideErrorClassL">
+                                        <input type=text
+											oncut="return false" oncopy="return false"
+											onpaste="return false" name=father_name id=fathername
+											maxlength=50 class="inputclass pageRequired"
+											placeholder=" Enter Father's / Husband's Name"
+											onKeyPress="return charactersonly_mobile(this,event)" />
+                                            </div>
+                                            <div class="rightsideErrorClassR">											
+											<div id="fatherNameErrorMessage" class="error" style="display: none;">Please Enter Father Name.</div>
+											<div id="fatherNameLengthErrorMessage" class="error" style="display: none;">Father name should contain at least 2 characters.</div>
+                                           
+                                            </div>
+                                            </div>
+											</td>
+									</tr>
+									<tr>
+										<td width=30%><label for=nationality>Select
+												Nationality</label></td>
+										<td class=rightbodernoneclass><select class="selectWidth pageRequired"
+											name=nationality id=nationality onchange=checkNationality()>
+												<option>Indian</option>
+												<option>Others</option>
+										</select></td>
+									</tr>
+									<tr>
+										<td colspan=2 style="padding-left: 0px;" width="100%">
+											<div class=nationality1 id=nationality1>
+												<table>
+													<tr>
+														<td class="bottombodernoneclass forwidthLabel" style="padding-left: 4px;">Specify Others</td>
+														<td class="tdborderNone"><input type=text
+															oncut="return false" oncopy="return false"
+															onpaste="return false" oncut="return false"
+															oncopy="return false" onpaste="return false"
+															name=other_nationality id=other_nationality maxlength=20
+															class=inputclass placeholder="Specify Other Nationality"
+															onKeyPress="return charactersonly_mobile(this,event)" /></td>
+													</tr>
+												</table>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td width=30%><label for=Religion>Enter Religion</label></td>
+										<td class=rightbodernoneclass>
+                                        <div class="rightsideErrorClassW">
+                                        <div class="rightsideErrorClassL">
+                                        <input type=text
+											oncut="return false" oncopy="return false"
+											onpaste="return false" name=religion id=Religion
+											placeholder=" Enter Religion" class="inputclass pageRequired"
+											maxlength=20
+											onKeyPress="return charactersonly_mobile(this,event)" />
+                                            </div>
+											<div class="rightsideErrorClassR">
+											<div id="religionErrorMessage" class="error" style="display: none;">Please Enter Your Religion.</div>
+                                            </div>
+                                            </div>
+											</td>
+									</tr>
+									<tr>
+										<td width=30%><label for=Sex>Select Sex</label></td>
+										<td class=rightbodernoneclass>
+											<div id="sex">
+                                            <div class="rightsideErrorClassW">
+                                            <div class="rightsideErrorClassL">
+												<input type=radio name=sex value="Male" />Male <input
+													type=radio name=sex value="Female" />Female
+                                             </div>
+                                             <div class="rightsideErrorClassR">
+												<div id="errormessageSex" class="error" style="display: none;">Please Select Sex</div>
+                                                </div>
+                                                </div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										
+											<td width=30%><label for=MaritalStatus>Select
+													Marital Status</label></td>
+											<td class=rightbodernoneclass>
+											<div id="marital">
+                                            <div class="rightsideErrorClassW">
+                                            <div class="rightsideErrorClassL">
+											<input type=radio
+												name=marital_status value=Married />Married <input
+												type=radio name=marital_status value=Unmarried />Unmarried
+                                                </div>
+                                                <div class="rightsideErrorClassR">
+												<div id="errormessageMaritualStatus" class="error" style="display: none;">Please Select Marital Status</div>
+                                                </div>
+                                                </div>
+												</div>
+												</td>
+										
+									</tr>
+									<tr>
+										<td width=30%><label for=DateofBirth>Select Date
+												of Birth</label></td>
+										<td class=rightbodernoneclass>
+										
+										
+										 <div class="rightsideErrorClassW">
+                                            <div class="rightsideErrorClassL">
+                                            <div id="dateOfBirth">
+										<select name=dob_dd
+											class="pageRequired fordd" title="select date" id="date">
+												<option value=DD>DD</option>
+												<option value=01>01</option>
+												<option value=02>02</option>
+												<option value=03>03</option>
+												<option value=04>04</option>
+												<option value=05>05</option>
+												<option value=06>06</option>
+												<option value=07>07</option>
+												<option value=08>08</option>
+												<option value=09>09</option>
+												<option value=10>10</option>
+												<option value=11>11</option>
+												<option value=12>12</option>
+												<option value=13>13</option>
+												<option value=14>14</option>
+												<option value=15>15</option>
+												<option value=16>16</option>
+												<option value=17>17</option>
+												<option value=18>18</option>
+												<option value=19>19</option>
+												<option value=20>20</option>
+												<option value=21>21</option>
+												<option value=22>22</option>
+												<option value=23>23</option>
+												<option value=24>24</option>
+												<option value=25>25</option>
+												<option value=26>26</option>
+												<option value=27>27</option>
+												<option value=28>28</option>
+												<option value=29>29</option>
+												<option value=30>30</option>
+												<option value=31>31</option>
+										</select> <select name=dob_mm class="pageRequired forMM"
+											title="select month" id="month">
+												<option value=MONTH>MONTH</option>
+												<option value=01>January</option>
+												<option value=02>February</option>
+												<option value=03>March</option>
+												<option value=04>April</option>
+												<option value=05>May</option>
+												<option value=06>June</option>
+												<option value=07>July</option>
+												<option value=08>August</option>
+												<option value=09>September</option>
+												<option value=10>October</option>
+												<option value=11>November</option>
+												<option value=12>December</option>
+										</select> <select name=dob_yyyy class="pageRequired forMM"
+											title="select year" id="year">
+												<option value=YEAR>YEAR</option>
+												<option value=1954>1954</option>
+												<option value=1955>1955</option>
+												<option value=1956>1956</option>
+												<option value=1957>1957</option>
+												<option value=1958>1958</option>
+												<option value=1959>1959</option>
+												<option value=1960>1960</option>
+												<option value=1961>1961</option>
+												<option value=1962>1962</option>
+												<option value=1963>1963</option>
+												<option value=1964>1964</option>
+												<option value=1965>1965</option>
+												<option value=1966>1966</option>
+												<option value=1967>1967</option>
+												<option value=1968>1968</option>
+												<option value=1969>1969</option>
+												<option value=1970>1970</option>
+												<option value=1971>1971</option>
+												<option value=1972>1972</option>
+												<option value=1973>1973</option>
+												<option value=1974>1974</option>
+												<option value=1975>1975</option>
+												<option value=1976>1976</option>
+												<option value=1977>1977</option>
+												<option value=1978>1978</option>
+												<option value=1979>1979</option>
+												<option value=1980>1980</option>
+												<option value=1981>1981</option>
+												<option value=1982>1982</option>
+												<option value=1983>1983</option>
+												<option value=1984>1984</option>
+												<option value=1985>1985</option>
+												<option value=1986>1986</option>
+												<option value=1987>1987</option>
+												<option value=1988>1988</option>
+												<option value=1989>1989</option>
+												<option value=1990>1990</option>
+												<option value=1991>1991</option>
+												<option value=1992>1992</option>
+												<option value=1993>1993</option>
+												<option value=1994>1994</option>
+												<option value=1995>1995</option>
+												<option value=1996>1996</option>
+										</select>
+                                      </div>
+                                      </div>
+                                      <div class="rightsideErrorClassR">
+ 
+											<div id="errormessage" class="error" style="display: none;">Please Select Date of birth</div>
+                                            </div>
+                                            </div></td>
+									</tr>
+									<tr>
+										
+ 
+											<td width=30%><label for=Community>Select
+													Community</label></td>
+											<td class="formLabels rightbodernoneclass">
+											<div id="community">
+                                            <div class="rightsideErrorClassW">
+                                            <div class="rightsideErrorClassL">
+											<input
+												type=radio id=community name=community onClick=showDiv(1)
+												value=UR /> UR <input type=radio id=community
+												name=community onClick=showDiv(2) value=OBC />OBC <input
+												type=radio name=community onClick=showDiv(2) value=SC />SC
+												<input type=radio onClick=showDiv(2) name=community value=ST />ST
+                                                </div>
+                                                <div class="rightsideErrorClassR">
+												<div id="errormessageCommunity" class="error" style="display: none;">Please Select Community</div>
+                                                </div>
+                                                </div>
+												</div>
+												</td>
+										
+									</tr>
+									<tr>
+										<td class="tdborderNone" colspan=2>
+											<div id=divAll style="display: none">
+												<table class=display>
+													<tr>
+														<td class=rightbodernoneclass colspan=4><b>Community
+																Certificate</b></td>
+													</tr>
+													<tr>
+														<td id=UploadSDiv4 style="display: none">Certificate
+															No</td>
+														<td id=UploadSDiv5 style="display: none">Date of
+															Issue</td>
+														<td id=UploadSDiv7 style="display: none">Place of
+															Issue</td>
+														<td class=rightbodernoneclass id=UploadSDiv9
+															style="display: none">Name of issuing authority</td>
+													</tr>
+													<tr>
+														<td id=UploadSDiv3 style="display: none;"
+															class="bottombodernoneclass"><input
+															style="width: 120px; margin: 2px 0 1px 0"
+															name=community_certficate_no id=community_certficate_no
+															placeholder=" Enter Certificate No" maxlength=20
+															type=text oncut="return false" oncopy="return false"
+															onpaste="return false"
+															onKeyPress="return charsNumbersAndSpecialCharsOnly(this,event)" /></td>
+														<td id=UploadSDiv6 style="display: none;"
+															class="bottombodernoneclass">
+															<select
+															name=community_dob_dd title="select your date"
+															class="fordd"><option value=DD>DD</option>
+																<option value=01>01</option>
+																<option value=02>02</option>
+																<option value=03>03</option>
+																<option value=04>04</option>
+																<option value=05>05</option>
+																<option value=06>06</option>
+																<option value=07>07</option>
+																<option value=08>08</option>
+																<option value=09>09</option>
+																<option value=10>10</option>
+																<option value=11>11</option>
+																<option value=12>12</option>
+																<option value=13>13</option>
+																<option value=14>14</option>
+																<option value=15>15</option>
+																<option value=16>16</option>
+																<option value=17>17</option>
+																<option value=18>18</option>
+																<option value=19>19</option>
+																<option value=20>20</option>
+																<option value=21>21</option>
+																<option value=22>22</option>
+																<option value=23>23</option>
+																<option value=24>24</option>
+																<option value=25>25</option>
+																<option value=26>26</option>
+																<option value=27>27</option>
+																<option value=28>28</option>
+																<option value=29>29</option>
+																<option value=30>30</option>
+																<option value=31>31</option></select> <select
+															name=community_dob_mm class="forMM"><option
+																	value=MONTH>MONTH</option>
+																<option value=01>January</option>
+																<option value=02>February</option>
+																<option value=03>March</option>
+																<option value=04>April</option>
+																<option value=05>May</option>
+																<option value=06>June</option>
+																<option value=07>July</option>
+																<option value=08>August</option>
+																<option value=09>September</option>
+																<option value=10>October</option>
+																<option value=11>November</option>
+																<option value=12>December</option></select> <select
+															name=community_dob_yyyy class="forMM"><option
+																	value=YEAR>YEAR</option>
+																<option value=1954>1954</option>
+																<option value=1955>1955</option>
+																<option value=1956>1956</option>
+																<option value=1957>1957</option>
+																<option value=1958>1958</option>
+																<option value=1959>1959</option>
+																<option value=1960>1960</option>
+																<option value=1961>1961</option>
+																<option value=1962>1962</option>
+																<option value=1963>1963</option>
+																<option value=1964>1964</option>
+																<option value=1965>1965</option>
+																<option value=1966>1966</option>
+																<option value=1967>1967</option>
+																<option value=1968>1968</option>
+																<option value=1969>1969</option>
+																<option value=1970>1970</option>
+																<option value=1971>1971</option>
+																<option value=1972>1972</option>
+																<option value=1973>1973</option>
+																<option value=1974>1974</option>
+																<option value=1975>1975</option>
+																<option value=1976>1976</option>
+																<option value=1977>1977</option>
+																<option value=1978>1978</option>
+																<option value=1979>1979</option>
+																<option value=1980>1980</option>
+																<option value=1981>1981</option>
+																<option value=1982>1982</option>
+																<option value=1983>1983</option>
+																<option value=1984>1984</option>
+																<option value=1985>1985</option>
+																<option value=1986>1986</option>
+																<option value=1987>1987</option>
+																<option value=1988>1988</option>
+																<option value=1989>1989</option>
+																<option value=1990>1990</option>
+																<option value=1991>1991</option>
+																<option value=1992>1992</option>
+																<option value=1993>1993</option>
+																<option value=1994>1994</option>
+																<option value=1995>1995</option>
+																<option value=1996>1996</option>
+																<option value=1997>1997</option>
+																<option value=1998>1998</option>
+																<option value=1999>1999</option>
+																<option value=2000>2000</option>
+																<option value=2001>2001</option>
+																<option value=2002>2002</option>
+																<option value=2003>2003</option>
+																<option value=2004>2004</option>
+																<option value=2005>2005</option>
+																<option value=2006>2006</option>
+																<option value=2007>2007</option>
+																<option value=2008>2008</option>
+																<option value=2009>2009</option>
+																<option value=2010>2010</option>
+																<option value=2011>2011</option>
+																<option value=2012>2012</option>
+																<option value=2013>2013</option>
+																<option value=2014>2014</option>
+																</select></td>
+														<td id=UploadSDiv8 style="display: none;"
+															class="bottombodernoneclass"><input
+															style="width: 120px; margin: 2px 0 1px 0"
+															name=community_place_issue id=community_place_issue
+															placeholder=" Enter Place of Issue" maxlength=50
+															type=text oncut="return false" oncopy="return false"
+															onpaste="return false"
+															onKeyPress="return charsAndNumbersOnly(this,event)" /></td>
+														<td class=rightbodernoneclass id=UploadSDiv10
+															style="display: none; border-bottom: 0"><input
+															style="width: 120px; margin: 2px 0 1px 0"
+															name=community_assured_by id=community_assured_by
+															placeholder=" Enter Name of issuing authority" maxlength=50 type=text
+															oncut="return false" oncopy="return false"
+															onpaste="return false"
+															onKeyPress="return charsAndNumbersOnly(this,event)" /></td>
+													</tr>
+												</table>
+											</div>
+										</td>
+									</tr>
+									
+									<tr>
+										<td class="bottombodernoneclass" width=30%><label
+											for=mobileNumber>Enter Mobile number</label></td>
+										<td class="tdborderNone">
+                                         <div class="rightsideErrorClassW">
+                                            <div class="rightsideErrorClassL">
+                                        (+91) <input name=mobileNumber
+											type=text oncut="return false" oncopy="return false"
+											onpaste="return false" style="width: 210px;" id=recordClientPhone
+											placeholder=" Enter Mobile number"
+											class="inputclass pageRequired" maxlength=10
+											onKeyPress="return numbersonly_mobile(this,event)" />
+											</div>
+                                            <div class="rightsideErrorClassR">
+											<div id="mobileErrorMessage" class="error" style="display: none;" >Please Enter Mobile Number</div>
+											<div id="mobileErrorMessageValidate" class="error" style="display: none;" >Please Enter Valid Mobile Number.</div>
+                                            </div>
+                                            </div>
+											</td>
+									</tr>
+									<tr>
+										<td class=rightbodernoneclass colspan=2><i>Note:
+												Please enter valid 10 digit mobile number. Please keep the
+												mobile along with you.<br /> To submit this application
+												form, a One-Time Password will be sent to this mobile
+												number.
+										</i></td>
+									</tr>
+									<tr>
+										<td class="bottombodernoneclass" width=30%><label
+											for=emailAddress>Enter Email address</label></td>
+										<td class="tdborderNone">
+                                         <div class="rightsideErrorClassW">
+                                            <div class="rightsideErrorClassL">
+                                        <input name=emailaddress
+											type=text oncut="return false" oncopy="return false"
+											onpaste="return false" id=recordClientEmail maxlength=40
+											placeholder=" Enter Email address"
+											class="inputclass pageRequired email" />
+                                            </div>
+                                            <div class="rightsideErrorClassR">
+										<div id="eMailErrorMessage" class="error" style="display: none;">Please Enter Email address.</div>	
+										<div id="eMailErrorMessageValidate" class="error" style="display: none;" >Please Enter Valid Email address.</div>	
+                                        </div>
+											</div>
+											
+											</td>
+									</tr>
+									<tr>
+										<td class=rightbodernoneclass colspan=2><i>Note:
+												Please enter valid email address which belongs to you. <br />
+												After submiting the Application Form, an acknowledgement
+												will be sent to the above mentioned email address.
+										</i></td>
+									</tr>
+									<tr>
+										<td class="tdborderNone" colspan=2>
+											<div class=buttonWrapper>
+												<input type=button class="nextbutton appFormBtmleft"
+													value="Home Page" onClick="goToInstructions()" /> <input
+													name=formBack0 type=button id=firstDivNext
+													class="nextbutton appFormBtmRight"
+													value="Proceed to Next Page" alt="Next step" />
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class=clear></div>
+						</fieldset>
+					</div>
+				</div>
+				<div id=div2 style="display: none">
+					<div>
+						<fieldset>
+							<legend>
+								<span class=legendDeActiveColor>Personal Details</span> <img
+									src=css/images/leagend_arrow_image.png /> <span
+									class=legendActiveColor>Address</span> <img
+									src=css/images/leagend_arrow_image.png /> <span
+									class=legendDeActiveColor>Education Details</span> <img
+									src=css/images/leagend_arrow_image.png /> <span
+									class=legendDeActiveColor>Identification and Additional
+									Details</span>
+							</legend>
+							<table class=display>
+								<tbody>
+									<tr>
+										<td width=30%><label for=nearstRailwayStation>Enter
+												Nearest Railway Station</label></td>
+										<td class=rightbodernoneclass>
+                                        <div class="rightsideErrorClassW">
+                                            <div class="rightsideErrorClassL">
+                                        <input type=text
+											oncut="return false" oncopy="return false"
+											onpaste="return false" name=near_railway_station
+											id=nearstRailwayStation maxlength=50
+											placeholder=" Enter Nearest railway station"
+											class="inputclass pageRequired"
+											onKeyPress="return charactersonly_mobile(this,event)" />
+											</div>
+                                            <div class="rightsideErrorClassR">
+											<div id="nearstRailwayStationErrorMessage" class="error" style="display: none;">
+											Please Enter Nearest Railway Station.</div>
+                                            </div>
+											</div>
+											</td>
+									</tr>
+									<tr>
+										<td width=30%>Enter Address for Communication</td>
+										<td class=rightbodernoneclass>
+                                         <div class="rightsideErrorClassW">
+                                            <div class="rightsideErrorClassL">
+                                        <textarea name=address
+												oncut="return false" oncopy="return false"
+												onpaste="return false" 
+												id=addressforCommunication placeholder=""  maxlength="200" onKeyPress="return limitTypingData(this, 200);"></textarea>
+                                            </div>
+                                            <div class="rightsideErrorClassR">
+											<div id="addressforCommunicationErrorMessage" class="error" style="display: none;">Please Enter Address.</div>	
+                                            </div>
+                                            </div>
+												</td>
+									</tr>
+									<tr>
+										<td class=rightbodernoneclass colspan=2><i>Note: In
+												the above field &lt; and &gt; are not allowed.</i></td>
+									</tr>
+									<tr>
+										<td width=30%>Enter District</td>
+										<td class=rightbodernoneclass>
+                                         <div class="rightsideErrorClassW">
+                                            <div class="rightsideErrorClassL">
+                                        <input type=text
+											oncut="return false" oncopy="return false"
+											onpaste="return false" name=district id=district maxlength=40
+											placeholder=" Enter District" class="inputclass pageRequired"
+											onKeyPress="return charactersonly_mobile(this,event)" />
+                                            </div>
+                                            <div class="rightsideErrorClassR">
+									<div id="districtErrorMessage" class="error" style="display: none;">Please Enter District</div>		
+                                    </div>
+                                    </div>
+											
+											</td>
+									</tr>
+									<tr>
+										<td width=30%><label for=state>Select State</label></td>
+										<td class=rightbodernoneclass>
+                                         <div class="rightsideErrorClassW">
+                                            <div class="rightsideErrorClassL">
+                                        <select
+											class="selectWidth pageRequired" id=state name=state><option
+													value="">Select State</option>
+												<option value="Andaman and Nicobar Islands">Andaman
+													and Nicobar Islands</option>
+												<option value="Andhra Pradesh">Andhra Pradesh</option>
+												<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+												<option value=Assam>Assam</option>
+												<option value=Bihar>Bihar</option>
+												<option value=Chandigarh>Chandigarh</option>
+												<option value=Chhattisgarh>Chhattisgarh</option>
+												<option value="Dadra and Nagar Haveli">Dadra and
+													Nagar Haveli</option>
+												<option value="Daman and Diu">Daman and Diu</option>
+												<option value=Delhi>Delhi</option>
+												<option value=Goa>Goa</option>
+												<option value=Gujarat>Gujarat</option>
+												<option value=Haryana>Haryana</option>
+												<option value="Himachal Pradesh">Himachal Pradesh</option>
+												<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+												<option value=Jharkhand>Jharkhand</option>
+												<option value=Karnataka>Karnataka</option>
+												<option value=Kerala>Kerala</option>
+												<option value=Lakshadweep>Lakshadweep</option>
+												<option value="Madhya Pradesh">Madhya Pradesh</option>
+												<option value=Maharashtra>Maharashtra</option>
+												<option value=Manipur>Manipur</option>
+												<option value=Meghalaya>Meghalaya</option>
+												<option value=Mizoram>Mizoram</option>
+												<option value=Nagaland>Nagaland</option>
+												<option value=Orissa>Orissa</option>
+												<option value=Pondicherry>Pondicherry</option>
+												<option value=Punjab>Punjab</option>
+												<option value=Rajasthan>Rajasthan</option>
+												<option value=Sikkim>Sikkim</option>
+												<option value="Tamil Nadu">Tamil Nadu</option>
+												<option value=Tripura>Tripura</option>
+												<option value=Uttaranchal>Uttaranchal</option>
+												<option value="Uttar Pradesh">Uttar Pradesh</option>
+												<option value="West Bengal">West Bengal</option>
+										</select>
+                                        </div>
+                                        <div class="rightsideErrorClassR">
+							<div id="stateErrorMessage" class="error" style="display: none;">Please Select State</div>			
+                            </div>
+										</div>
+										</td>
+									</tr>
+									<tr>
+										<td width=30%><label for=recordZipcode>Enter
+												Pincode</label></td>
+										<td class=rightbodernoneclass>
+                                         <div class="rightsideErrorClassW">
+                                            <div class="rightsideErrorClassL">
+                                        <input name=pincode
+											id=recordZipcode class="inputclass pageRequired" maxlength=6
+											placeholder=" Enter Pincode" maxlength=6 type=text
+											oncut="return false" oncopy="return false"
+											onpaste="return false"
+											onKeyPress="return numbersonly_mobile(this,event)" />
+                                            </div>
+                                            <div class="rightsideErrorClassR">
+								<div id="recordZipcodeErrorMessage" class="error" style="display: none;">Please Enter Pincode and Should be 6 Digits.</div>			
+                                </div>
+                                </div>
+											
+											</td>
+									</tr>
+									<tr>
+										<td colspan=2 class="tdborderNone">
+											<div class=buttonWrapper>
+												<input name=back type=button
+													class="open0 prevbutton appFormBtmleft" value=Back alt=Back
+													id=firstDivBack /> <input name=Proceed id=secondDivNext
+													type=button class="open2 nextbutton appFormBtmRight"
+													value="Proceed to Next Page" alt=Proceed />
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
+					</div>
+				</div>
+				<div id=div3 style="display: none">
+					<div>
+						<fieldset>
+							<legend>
+								<span class=legendDeActiveColor>Personal Details</span> <img
+									src=css/images/leagend_arrow_image.png /> <span
+									class=legendDeActiveColor>Address</span> <img
+									src=css/images/leagend_arrow_image.png /> <span
+									class=legendActiveColor>Education Details</span> <img
+									src=css/images/leagend_arrow_image.png /> <span
+									class=legendDeActiveColor>Identification and Additional
+									Details</span>
+							</legend>
+							<table class=display>
+								<tbody>
+									<tr>
+										<td class=center>Educational Qualifications</td>
+										<td class=rightbodernoneclass>
+                                        <div id="education_qualification_ids">
+                                        <div><label><input type=checkbox name=education_qualification_ids
+												id=education_qualification_ids value=1 />SSLC/Matric (Secondary School Certificate/Matric) <em>(if selected please enter certficate details below)</em></label> </div>
+										<div><label><input type=checkbox name=education_qualification_ids
+												id=education_qualification_ids value=2 />HSC/SSC (Higher Secondary Certificate / Senior Secondary Certificate )</label> </div>
+										<div><label><input type=checkbox name=education_qualification_ids
+												id=education_qualification_ids value=3 /> ITI <em>(if selected please enter  certficate details below)</em></label></div> 
+										<div><label><input type=checkbox name=education_qualification_ids
+												id=education_qualification_ids value=4 /> Course Completed
+												Act Apprentice</label> </div>
+										<div><label><input type=checkbox name=education_qualification_ids
+												id=education_qualification_ids value=5 /> Diploma</label> </div>
+										<div><label><b>Non-Technical : </b></label> </div>
+										<div><label><input type=checkbox name="education_qualification_ids"
+												id=education_qualification_ids value=6 /> Graduate </label> </div>
+										<div><label><input type=checkbox name=education_qualification_ids
+												id=education_qualification_ids value=7 /> PostGraduate</label> </div>
+										<div><label><b>Technical : </b></label> </div>
+										<div><label><input type=checkbox name=education_qualification_ids
+												id=education_qualification_ids value=8 /> Graduate </label> </div>
+										<div><label><input type=checkbox name=education_qualification_ids
+												id=education_qualification_ids value=9 /> PostGraduate</label></div>
+                                                </div>
+                                               </td>
+                                                
+									</tr>
+									<tr>
+										<td class="tdborderNone" colspan=2>
+												<table class=display>
+													<tr>
+														<td class=rightbodernoneclass colspan=3><b>Education
+																Certificate (These details required for Secondary School Certificate/Matric or ITI Only)</b></td>
+													</tr>
+													<tr>
+														<td id=EduUploadSDiv31 >Certificate
+															No</td>
+														<td id=EduUploadSDiv33 >Date of
+															Issue</td>
+														<td class=rightbodernoneclass id=EduUploadSDiv35>Board / Institution</td>
+													</tr>
+													<tr>
+														<td id=EduUploadSDiv32 
+															class="bottombodernoneclass"><input
+															style="width: 120px; margin: 2px 0 1px 0"
+															name=edu_certficate_no id=edu_certficate_no
+															maxlength=20 type=text oncut="return false"
+															oncopy="return false" onpaste="return false"
+															onKeyPress="return charsNumbersAndSpecialCharsOnly(this,event)" /></td>
+														<td id=EduUploadSDiv34 
+															class="bottombodernoneclass"><select
+															name=edu_date_issue_dd class="fordd"><option value=DD>DD</option>
+																<option value=01>01</option>
+																<option value=02>02</option>
+																<option value=03>03</option>
+																<option value=04>04</option>
+																<option value=05>05</option>
+																<option value=06>06</option>
+																<option value=07>07</option>
+																<option value=08>08</option>
+																<option value=09>09</option>
+																<option value=10>10</option>
+																<option value=11>11</option>
+																<option value=12>12</option>
+																<option value=13>13</option>
+																<option value=14>14</option>
+																<option value=15>15</option>
+																<option value=16>16</option>
+																<option value=17>17</option>
+																<option value=18>18</option>
+																<option value=19>19</option>
+																<option value=20>20</option>
+																<option value=21>21</option>
+																<option value=22>22</option>
+																<option value=23>23</option>
+																<option value=24>24</option>
+																<option value=25>25</option>
+																<option value=26>26</option>
+																<option value=27>27</option>
+																<option value=28>28</option>
+																<option value=29>29</option>
+																<option value=30>30</option>
+																<option value=31>31</option></select> <select name=edu_date_issue_mm
+															class="forMM"><option value=MONTH>MONTH</option>
+																<option value=01>January</option>
+																<option value=02>February</option>
+																<option value=03>March</option>
+																<option value=04>April</option>
+																<option value=05>May</option>
+																<option value=06>June</option>
+																<option value=07>July</option>
+																<option value=08>August</option>
+																<option value=09>September</option>
+																<option value=10>October</option>
+																<option value=11>November</option>
+																<option value=12>December</option></select> <select
+															name=edu_date_issue_yyyy class="forMM"><option
+																	value=YEAR>YEAR</option>
+																<option value=1954>1954</option>
+																<option value=1955>1955</option>
+																<option value=1956>1956</option>
+																<option value=1957>1957</option>
+																<option value=1958>1958</option>
+																<option value=1959>1959</option>
+																<option value=1960>1960</option>
+																<option value=1961>1961</option>
+																<option value=1962>1962</option>
+																<option value=1963>1963</option>
+																<option value=1964>1964</option>
+																<option value=1965>1965</option>
+																<option value=1966>1966</option>
+																<option value=1967>1967</option>
+																<option value=1968>1968</option>
+																<option value=1969>1969</option>
+																<option value=1970>1970</option>
+																<option value=1971>1971</option>
+																<option value=1972>1972</option>
+																<option value=1973>1973</option>
+																<option value=1974>1974</option>
+																<option value=1975>1975</option>
+																<option value=1976>1976</option>
+																<option value=1977>1977</option>
+																<option value=1978>1978</option>
+																<option value=1979>1979</option>
+																<option value=1980>1980</option>
+																<option value=1981>1981</option>
+																<option value=1982>1982</option>
+																<option value=1983>1983</option>
+																<option value=1984>1984</option>
+																<option value=1985>1985</option>
+																<option value=1986>1986</option>
+																<option value=1987>1987</option>
+																<option value=1988>1988</option>
+																<option value=1989>1989</option>
+																<option value=1990>1990</option>
+																<option value=1991>1991</option>
+																<option value=1992>1992</option>
+																<option value=1993>1993</option>
+																<option value=1994>1994</option>
+																<option value=1995>1995</option>
+																<option value=1996>1996</option>
+																<option value=1997>1997</option>
+																<option value=1998>1998</option>
+																<option value=1999>1999</option>
+																<option value=2000>2000</option>
+																<option value=2001>2001</option>
+																<option value=2002>2002</option>
+																<option value=2003>2003</option>
+																<option value=2004>2004</option>
+																<option value=2005>2005</option>
+																<option value=2006>2006</option>
+																<option value=2007>2007</option>
+																<option value=2008>2008</option>
+																<option value=2009>2009</option>
+																<option value=2010>2010</option>
+																<option value=2011>2011</option>
+																<option value=2012>2012</option>
+																<option value=2013>2013</option></select></td>
+														<td id=EduUploadSDiv36 
+															class="bottombodernoneclass"><input
+															style="width: 180px; margin: 2px 0 1px 0" maxlength=80
+															name=board_name id=board_name type=text
+															oncut="return false" oncopy="return false"
+															onpaste="return false"
+															onKeyPress="return charsAndNumbersOnly(this,event)" /></td>
+													</tr>
+												</table>
+										</td>
+									</tr>
+									<tr>
+									<td colspan="2" class="tdborderNone center">
+									<div id="education_qualification_idsErrorMessage" class="error" style="display: none;">Please Select Any Qualification.</div>
+									</td>
+									</tr>
+									<tr>
+									<td colspan="2" class="tdborderNone center">
+									<div id="education_min_qualification_ErrorMessage" class="error" style="display: none;">Minimum Qualification SSLC/Matric (Secondary School Certificate/Matric) or ITI required</div>
+									</td>
+									</tr>
+									<tr>
+										<td colspan=2 class="tdborderNone">
+											<div class=buttonWrapper>
+												<input name=back type=button
+													class="open1 prevbutton appFormBtmleft" value=Back alt=Back
+													id=secondDivBack /> <input name=Proceed id=thirdDivNext
+													type=button class="open3 nextbutton appFormBtmRight"
+													value="Proceed to Next Page" alt=Proceed />
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
+					</div>
+				</div>
+				<div id=div4 style="display: none">
+					<div>
+						<fieldset>
+							<legend>
+								<span class=legendDeActiveColor>Personal Details</span> <img
+									src=css/images/leagend_arrow_image.png /> <span
+									class=legendDeActiveColor>Address</span> <img
+									src=css/images/leagend_arrow_image.png /> <span
+									class=legendDeActiveColor>Education Details</span> <img
+									src=css/images/leagend_arrow_image.png /> <span
+									class=legendActiveColor>Identification and Additional
+									Details</span>
+							</legend>
+							<fieldset>
+								<legend> Identification Details </legend>
+								<table class=display>
+									<tbody>
+										<tr>
+											<td class="bottombodernoneclass tdWidth">Enter Personal
+												marks of Identification</td>
+											<td style="border: 0"><input type=text class="inputclass" 
+												oncut="return false" oncopy="return false"
+												onpaste="return false" id=personalMoal
+												name=identification_mark_1 maxlength=80
+												placeholder=" 1. Enter Identification Marks "
+												onKeyPress="return charactersonly_mobile(this,event)" />
+							<div id="personalMoalErrorMessage" class="error" style="display: none;"> Enter Personal marks of Identification.</div>					
+												
+												<br />
+												<input id=personalMoal2 type=text class="inputclass" oncut="return false"
+												oncopy="return false" onpaste="return false"
+												name=identification_mark_2 maxlength=80
+												placeholder=" 2. Enter Identification Marks "
+												onKeyPress="return charactersonly_mobile(this,event)" />
+							<div id="personalMoal2ErrorMessage" class="error" style="display: none;"> Enter Personal marks of Identification.</div>					
+												
+												
+												</td>
+										</tr>
+									</tbody>
+								</table>
+							</fieldset>
+							<fieldset>
+								<legend>Tick appropriate column</legend>
+								<table class=display>
+									<tr>
+										<td width=50%>Are you Ex-serviceman</td>
+										<td class=rightbodernoneclass>
+										
+										
+										<div id="ex_serviceman">
+										<input type=radio id="exserviceman" name="ex_serviceman" value="true" onClick="showDiv(5)" /> Yes
+									    <input type=radio id="exserviceman" name="ex_serviceman" value="false" onClick="showDiv(6)" /> No
+											
+						</div>
+						<div id="ex_servicemanErrorMessage" class="error" style="display: none;">Please Select  Ex-serviceman</div>
+						</td>
+									</tr>
+									<tr>
+										<td class="tdborderNone" colspan=2>
+											<div id=divAllRadiodd style="display: none">
+												<table class=display>
+													<tr>
+														<td class=rightbodernoneclass colspan=4><b>Ex-Serviceman
+																Certificate</b></td>
+													</tr>
+													<tr>
+														<td id=UploadSDiv31 style="width:90px; display: none">Discharge Book No / Certificate
+															No</td>
+														<td id=UploadSDiv33 style="display: none">Date of Enrollment in defense</td>
+														<td id=UploadSDiv35 style="width:75px; display: none">Total duration of service (years)</td>
+														<td class=rightbodernoneclass id=UploadSDiv37
+															style="width:120px; display: none">Date of Retirement</td>
+													</tr>
+													<tr>
+														<td id=UploadSDiv32 style="display: none;"
+															class="bottombodernoneclass"><input
+															style="width: 90px; margin: 2px 0 1px 0"
+															name=exman_certficate_no id=exman_certficate_no
+															maxlength=20 type=text oncut="return false"
+															oncopy="return false" onpaste="return false"
+															onKeyPress="return charsNumbersAndSpecialCharsOnly(this,event)" /></td>
+														<td id=UploadSDiv34 style="width: 170px; display: none;"
+															class="bottombodernoneclass"><select
+															name=exman_enrollment_dd class="fordd"><option value=DD>DD</option>
+																<option value=01>01</option>
+																<option value=02>02</option>
+																<option value=03>03</option>
+																<option value=04>04</option>
+																<option value=05>05</option>
+																<option value=06>06</option>
+																<option value=07>07</option>
+																<option value=08>08</option>
+																<option value=09>09</option>
+																<option value=10>10</option>
+																<option value=11>11</option>
+																<option value=12>12</option>
+																<option value=13>13</option>
+																<option value=14>14</option>
+																<option value=15>15</option>
+																<option value=16>16</option>
+																<option value=17>17</option>
+																<option value=18>18</option>
+																<option value=19>19</option>
+																<option value=20>20</option>
+																<option value=21>21</option>
+																<option value=22>22</option>
+																<option value=23>23</option>
+																<option value=24>24</option>
+																<option value=25>25</option>
+																<option value=26>26</option>
+																<option value=27>27</option>
+																<option value=28>28</option>
+																<option value=29>29</option>
+																<option value=30>30</option>
+																<option value=31>31</option></select> <select name=exman_enrollment_mm
+															class="forMM"><option value=MONTH>MONTH</option>
+																<option value=01>January</option>
+																<option value=02>February</option>
+																<option value=03>March</option>
+																<option value=04>April</option>
+																<option value=05>May</option>
+																<option value=06>June</option>
+																<option value=07>July</option>
+																<option value=08>August</option>
+																<option value=09>September</option>
+																<option value=10>October</option>
+																<option value=11>November</option>
+																<option value=12>December</option></select> <select
+															name=exman_enrollment_yyyy class="forMM"><option
+																	value=YEAR>YEAR</option>
+																<option value=1954>1954</option>
+																<option value=1955>1955</option>
+																<option value=1956>1956</option>
+																<option value=1957>1957</option>
+																<option value=1958>1958</option>
+																<option value=1959>1959</option>
+																<option value=1960>1960</option>
+																<option value=1961>1961</option>
+																<option value=1962>1962</option>
+																<option value=1963>1963</option>
+																<option value=1964>1964</option>
+																<option value=1965>1965</option>
+																<option value=1966>1966</option>
+																<option value=1967>1967</option>
+																<option value=1968>1968</option>
+																<option value=1969>1969</option>
+																<option value=1970>1970</option>
+																<option value=1971>1971</option>
+																<option value=1972>1972</option>
+																<option value=1973>1973</option>
+																<option value=1974>1974</option>
+																<option value=1975>1975</option>
+																<option value=1976>1976</option>
+																<option value=1977>1977</option>
+																<option value=1978>1978</option>
+																<option value=1979>1979</option>
+																<option value=1980>1980</option>
+																<option value=1981>1981</option>
+																<option value=1982>1982</option>
+																<option value=1983>1983</option>
+																<option value=1984>1984</option>
+																<option value=1985>1985</option>
+																<option value=1986>1986</option>
+																<option value=1987>1987</option>
+																<option value=1988>1988</option>
+																<option value=1989>1989</option>
+																<option value=1990>1990</option>
+																<option value=1991>1991</option>
+																<option value=1992>1992</option>
+																<option value=1993>1993</option>
+																<option value=1994>1994</option>
+																<option value=1995>1995</option>
+																<option value=1996>1996</option>
+																<option value=1997>1997</option>
+																<option value=1998>1998</option>
+																<option value=1999>1999</option>
+																<option value=2000>2000</option>
+																<option value=2001>2001</option>
+																<option value=2002>2002</option>
+																<option value=2003>2003</option>
+																<option value=2004>2004</option>
+																<option value=2005>2005</option>
+																<option value=2006>2006</option>
+																<option value=2007>2007</option>
+																<option value=2008>2008</option>
+																<option value=2009>2009</option>
+																<option value=2010>2010</option>
+																<option value=2011>2011</option>
+																<option value=2012>2012</option>
+																<option value=2013>2013</option></select></td>
+														<td id=UploadSDiv36 style="width: 80px; display: none;"
+															class="bottombodernoneclass"><select
+															name=exman_service style="width:80px;" class="fordd"><option value=0>Select</option>
+																<option value=01>01</option>
+																<option value=02>02</option>
+																<option value=03>03</option>
+																<option value=04>04</option>
+																<option value=05>05</option>
+																<option value=06>06</option>
+																<option value=07>07</option>
+																<option value=08>08</option>
+																<option value=09>09</option>
+																<option value=10>10</option>
+																<option value=11>11</option>
+																<option value=12>12</option>
+																<option value=13>13</option>
+																<option value=14>14</option>
+																<option value=15>15</option>
+																<option value=16>16</option>
+																<option value=17>17</option>
+																<option value=18>18</option>
+																<option value=19>19</option>
+																<option value=20>20</option>
+																<option value=21>21</option>
+																<option value=22>22</option>
+																<option value=23>23</option>
+																<option value=24>24</option>
+																<option value=25>25</option>
+																<option value=26>26</option>
+																<option value=27>27</option>
+																<option value=28>28</option>
+																<option value=29>29</option>
+																<option value=30>30</option>
+																<option value=31>31</option>
+																<option value=32>32</option>
+																<option value=33>33</option>
+																<option value=34>34</option>
+																<option value=35>35</option>
+																<option value=36>36</option>
+																<option value=37>37</option>
+																<option value=38>38</option>
+																<option value=39>39</option>
+																<option value=40>40</option>
+																<option value=41>41</option>
+																<option value=42>42</option>
+																<option value=43>43</option>
+																<option value=44>44</option>
+																<option value=45>45</option>
+																<option value=46>46</option>
+																<option value=47>47</option>
+																<option value=48>48</option>
+																<option value=49>49</option>
+																<option value=50>50</option>
+																<option value=51>51</option>
+																<option value=52>52</option>
+																<option value=53>53</option>
+																<option value=54>54</option>
+																<option value=55>55</option>
+																<option value=56>56</option>
+																<option value=57>57</option>
+																<option value=58>58</option>
+																<option value=59>59</option>
+																<option value=60>60</option></select></td>		
+														<td id=UploadSDiv38 style="width: 170px; display: none;"
+															class="tdborderNone"><select
+															name=exman_retirement_dd class="fordd"><option value=DD>DD</option>
+																<option value=01>01</option>
+																<option value=02>02</option>
+																<option value=03>03</option>
+																<option value=04>04</option>
+																<option value=05>05</option>
+																<option value=06>06</option>
+																<option value=07>07</option>
+																<option value=08>08</option>
+																<option value=09>09</option>
+																<option value=10>10</option>
+																<option value=11>11</option>
+																<option value=12>12</option>
+																<option value=13>13</option>
+																<option value=14>14</option>
+																<option value=15>15</option>
+																<option value=16>16</option>
+																<option value=17>17</option>
+																<option value=18>18</option>
+																<option value=19>19</option>
+																<option value=20>20</option>
+																<option value=21>21</option>
+																<option value=22>22</option>
+																<option value=23>23</option>
+																<option value=24>24</option>
+																<option value=25>25</option>
+																<option value=26>26</option>
+																<option value=27>27</option>
+																<option value=28>28</option>
+																<option value=29>29</option>
+																<option value=30>30</option>
+																<option value=31>31</option></select> <select name=exman_retirement_mm
+															class="forMM"><option value=MONTH>MONTH</option>
+																<option value=01>January</option>
+																<option value=02>February</option>
+																<option value=03>March</option>
+																<option value=04>April</option>
+																<option value=05>May</option>
+																<option value=06>June</option>
+																<option value=07>July</option>
+																<option value=08>August</option>
+																<option value=09>September</option>
+																<option value=10>October</option>
+																<option value=11>November</option>
+																<option value=12>December</option></select> <select
+															name=exman_retirement_yyyy class="forMM"><option
+																	value=YEAR>YEAR</option>
+																<option value=1954>1954</option>
+																<option value=1955>1955</option>
+																<option value=1956>1956</option>
+																<option value=1957>1957</option>
+																<option value=1958>1958</option>
+																<option value=1959>1959</option>
+																<option value=1960>1960</option>
+																<option value=1961>1961</option>
+																<option value=1962>1962</option>
+																<option value=1963>1963</option>
+																<option value=1964>1964</option>
+																<option value=1965>1965</option>
+																<option value=1966>1966</option>
+																<option value=1967>1967</option>
+																<option value=1968>1968</option>
+																<option value=1969>1969</option>
+																<option value=1970>1970</option>
+																<option value=1971>1971</option>
+																<option value=1972>1972</option>
+																<option value=1973>1973</option>
+																<option value=1974>1974</option>
+																<option value=1975>1975</option>
+																<option value=1976>1976</option>
+																<option value=1977>1977</option>
+																<option value=1978>1978</option>
+																<option value=1979>1979</option>
+																<option value=1980>1980</option>
+																<option value=1981>1981</option>
+																<option value=1982>1982</option>
+																<option value=1983>1983</option>
+																<option value=1984>1984</option>
+																<option value=1985>1985</option>
+																<option value=1986>1986</option>
+																<option value=1987>1987</option>
+																<option value=1988>1988</option>
+																<option value=1989>1989</option>
+																<option value=1990>1990</option>
+																<option value=1991>1991</option>
+																<option value=1992>1992</option>
+																<option value=1993>1993</option>
+																<option value=1994>1994</option>
+																<option value=1995>1995</option>
+																<option value=1996>1996</option>
+																<option value=1997>1997</option>
+																<option value=1998>1998</option>
+																<option value=1999>1999</option>
+																<option value=2000>2000</option>
+																<option value=2001>2001</option>
+																<option value=2002>2002</option>
+																<option value=2003>2003</option>
+																<option value=2004>2004</option>
+																<option value=2005>2005</option>
+																<option value=2006>2006</option>
+																<option value=2007>2007</option>
+																<option value=2008>2008</option>
+																<option value=2009>2009</option>
+																<option value=2010>2010</option>
+																<option value=2011>2011</option>
+																<option value=2012>2012</option>
+																<option value=2013>2013</option></select></td>
+													</tr>
+												</table>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td width=50%>Are you Person with Disabilities</td>
+										<td class=rightbodernoneclass>
+						<div id="pwd">				
+										<input type="radio" id="Disabilites" name="pwd" value="true" onclick="showDiv(3)" /> Yes
+										<input type="radio" id="Disabilites" name="pwd" value="false" onClick="showDiv(4)" /> No
+						</div><div id="pwdErrorMessage" class="error" style="display: none;" >Please Select Person with Disabilities.</div>
+										
+											</td>
+									</tr>
+									<tr>
+										<td class="tdborderNone" colspan=2>
+											<div id=divAllRadioCheckbox style="display: none">
+												<table class=display>
+													<tr>
+														<td colspan="5" style="font-size:13px;">
+														<i>Handicapped certificate should be Issued by a Medical Board which consist of at least 3 doctors out of which one should be a specialist in particular field.</i></td>
+													</tr>
+													<tr>
+														<td class=rightbodernoneclass colspan=5><b>Disabilities
+																Details</b></td>
+													</tr>
+													<tr>
+														<td id=UploadSDiv27 style="display: none">Disabilities</td>
+														<td id=UploadSDiv19 style="display: none">Certificate
+															No</td>
+														<td id=UploadSDiv21 style="display: none">Date of
+															Issue</td>
+														<td id=UploadSDiv23 style="display: none">Place of
+															Issue</td>
+														<td class=rightbodernoneclass id=UploadSDiv25
+															style="display: none">Name of issuing authority</td>
+													</tr>
+													<tr>
+														<td id=UploadSDiv28 style="display: none"><input
+															type=checkbox value=VH name=pwd_cat id=pwd_cat /> VH <input
+															type=checkbox value=HH name=pwd_cat id="pwd_cat" /> HH <input
+															type=checkbox value=OH name=pwd_cat id="pwd_cat" /> OH</td>
+														<td id=UploadSDiv20 style="display: none"><input
+															type=text oncut="return false" oncopy="return false"
+															onpaste="return false" maxlength=20
+															name=pwd_certficate_no id=pwd_certficate_no
+															style="width: 120px"
+															onKeyPress="return charsNumbersAndSpecialCharsOnly(this,event)" /></td>
+														<td id=UploadSDiv22 style="display: none"><select
+															name=pwd_dob_dd class="fordd" style="width:40px;"><option value=DD>DD</option>
+																<option value=01>01</option>
+																<option value=02>02</option>
+																<option value=03>03</option>
+																<option value=04>04</option>
+																<option value=05>05</option>
+																<option value=06>06</option>
+																<option value=07>07</option>
+																<option value=08>08</option>
+																<option value=09>09</option>
+																<option value=10>10</option>
+																<option value=11>11</option>
+																<option value=12>12</option>
+																<option value=13>13</option>
+																<option value=14>14</option>
+																<option value=15>15</option>
+																<option value=16>16</option>
+																<option value=17>17</option>
+																<option value=18>18</option>
+																<option value=19>19</option>
+																<option value=20>20</option>
+																<option value=21>21</option>
+																<option value=22>22</option>
+																<option value=23>23</option>
+																<option value=24>24</option>
+																<option value=25>25</option>
+																<option value=26>26</option>
+																<option value=27>27</option>
+																<option value=28>28</option>
+																<option value=29>29</option>
+																<option value=30>30</option>
+																<option value=31>31</option></select> <select name=pwd_dob_mm
+															class="forMM" style="width:74px;"><option value=MONTH>MONTH</option>
+																<option value=01>January</option>
+																<option value=02>February</option>
+																<option value=03>March</option>
+																<option value=04>April</option>
+																<option value=05>May</option>
+																<option value=06>June</option>
+																<option value=07>July</option>
+																<option value=08>August</option>
+																<option value=09>September</option>
+																<option value=10>October</option>
+																<option value=11>November</option>
+																<option value=12>December</option></select> <select
+															name=pwd_dob_yyyy class="forMM" style="width:60px;"><option
+																	value=YEAR>YEAR</option>
+																<option value=1954>1954</option>
+																<option value=1955>1955</option>
+																<option value=1956>1956</option>
+																<option value=1957>1957</option>
+																<option value=1958>1958</option>
+																<option value=1959>1959</option>
+																<option value=1960>1960</option>
+																<option value=1961>1961</option>
+																<option value=1962>1962</option>
+																<option value=1963>1963</option>
+																<option value=1964>1964</option>
+																<option value=1965>1965</option>
+																<option value=1966>1966</option>
+																<option value=1967>1967</option>
+																<option value=1968>1968</option>
+																<option value=1969>1969</option>
+																<option value=1970>1970</option>
+																<option value=1971>1971</option>
+																<option value=1972>1972</option>
+																<option value=1973>1973</option>
+																<option value=1974>1974</option>
+																<option value=1975>1975</option>
+																<option value=1976>1976</option>
+																<option value=1977>1977</option>
+																<option value=1978>1978</option>
+																<option value=1979>1979</option>
+																<option value=1980>1980</option>
+																<option value=1981>1981</option>
+																<option value=1982>1982</option>
+																<option value=1983>1983</option>
+																<option value=1984>1984</option>
+																<option value=1985>1985</option>
+																<option value=1986>1986</option>
+																<option value=1987>1987</option>
+																<option value=1988>1988</option>
+																<option value=1989>1989</option>
+																<option value=1990>1990</option>
+																<option value=1991>1991</option>
+																<option value=1992>1992</option>
+																<option value=1993>1993</option>
+																<option value=1994>1994</option>
+																<option value=1995>1995</option>
+																<option value=1996>1996</option>
+																<option value=1997>1997</option>
+																<option value=1998>1998</option>
+																<option value=1999>1999</option>
+																<option value=2000>2000</option>
+																<option value=2001>2001</option>
+																<option value=2002>2002</option>
+																<option value=2003>2003</option>
+																<option value=2004>2004</option>
+																<option value=2005>2005</option>
+																<option value=2006>2006</option>
+																<option value=2007>2007</option>
+																<option value=2008>2008</option>
+																<option value=2009>2009</option>
+																<option value=2010>2010</option>
+																<option value=2011>2011</option>
+																<option value=2012>2012</option>
+																<option value=2013>2013</option></select></td>
+														<td id=UploadSDiv24 style="display: none"><input
+															type=text oncut="return false" oncopy="return false"
+															onpaste="return false" maxlength=50 name=pwd_place_issue
+															id=pwd_place_issue style="width: 120px"
+															onKeyPress="return charsAndNumbersOnly(this,event)" /></td>
+														<td class=rightbodernoneclass id=UploadSDiv26
+															style="display: none"><input type=text
+															oncut="return false" oncopy="return false"
+															onpaste="return false" maxlength=50 name=pwd_assured_by
+															id=pwd_assured_by style="width: 120px"
+															onKeyPress="return charsAndNumbersOnly(this,event)" /></td>
+													</tr>
+												</table>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td width=50%>Are you Widow/Divorced/Judicially separted
+											Women</td>
+										<td class=rightbodernoneclass>
+								
+								<div id="widow_women">			
+										<input type="radio" name=widow_women value="true" /> Yes
+										<input type="radio" name=widow_women value="false" /> No
+						    </div><div id="widow_womenErrorMessage" class="error" style="display: none;">Please Select Widow/Divorced/Judicially separted Women</div>					
+											
+											</td>
+									</tr>
+									<tr>
+										<td width=50%>Are you Economically Weaker Section</td>
+										<td class=rightbodernoneclass>
+											<div id="economic_weaker">				
+										<input type=radio name="economic_weaker" value="true" /> Yes 
+										<input type=radio name="economic_weaker" value="false" /> No
+						</div><div id="economic_weakerErrorMessage" class="error" style="display: none;">Please Select Economically Weaker Section</div>
+						
+						</td>
+									</tr>
+									<tr>
+										<td width=50%>Are you belonging to Minority Religion</td>
+										<td class=rightbodernoneclass>
+										
+										<div id="minority">					
+										<input type="radio" name="minority" value="true" /> Yes 
+										<input type="radio" name="minority" value="false" /> No
+					</div><div id="minorityErrorMessage" class="error" style="display: none;">Please Select Minority Religion</div>
+											</td>
+									</tr>
+									<tr>
+										<td width=50%>Are you Staff of Quasi Administrative
+											Offices of Railways</td>
+										<td class=rightbodernoneclass>
+										
+						<div id="staff_quasi">			
+										
+										<input type="radio" name="staff_quasi" value="true" /> Yes 
+										<input type="radio" name="staff_quasi" value="false" /> No
+							</div><div id="staff_quasiErrorMessage" class="error" style="display: none;">Please Select Staff of Quasi Administrative Offices of Railways</div>	
+											
+											
+											</td>
+									</tr>
+									<tr>
+										<td>Are you Residents of Jammu &amp; Kashmir</td>
+										<td class=rightbodernoneclass>
+										
+									<div id="resident_jk">			
+										<input type="radio" name="resident_jk" value="true" /> Yes 
+										<input type="radio" name="resident_jk" value="false" /> No
+							</div><div id="resident_jkErrorMessage" class="error" style="display: none;">Please Select Residents of Jammu & Kashmir</div>
+											
+											</td>
+									</tr>
+									<tr>
+										<td width=50%>Are you Serving Railway Employees</td>
+										<td class=rightbodernoneclass>
+						<div id="railway_employee_service">			
+										<input type="radio" name="railway_employee_service" value="true" /> Yes 
+										<input type="radio" name="railway_employee_service" value="false" /> No
+							</div><div id="railway_employee_serviceErrorMessage" class="error" style="display: none;">Please Select Serving Railway Employees</div>				
+											
+											</td>
+									</tr>
+									<tr>
+										<td width=50%>Are you Central/State Govt. Employees</td>
+										<td class=rightbodernoneclass>
+										
+								<div id="govt_employee_service">			
+										<input type="radio" name="govt_employee_service" value="true" /> Yes 
+										<input type="radio" name="govt_employee_service" value="false" /> No
+							</div><div id="govt_employee_serviceErrorMessage" class="error" style="display: none;">Please Select Central/State Govt. Employees</div>				
+								
+											</td>
+									</tr>
+									<tr>
+										<td class="tdborderNone" colspan=2>
+											<div class=buttonWrapper>
+												<input name=back type=button
+													class="open2 prevbutton appFormBtmleft" value=Back
+													id=thirdDivBack /> <input name=Proceed id=fourthDivNext
+													type=submit class="open4 nextbutton appFormBtmRightLast"
+													value="Proceed to Preview Application"
+													onClick="return validation()" />
+											</div>
+										</td>
+									</tr>
+								</table>
+							</fieldset>
+						</fieldset>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!-- <div class="footerContentHeight"></div> -->
+		<div class="wrapper-footer">
+<div id="divFooterInner">
+<a href="applicationIndex">Home</a> | <a href="footer/privacypolicy.jsp" target="_blank">Privacy Policy</a> | <a href="footer/termsofuse.jsp" target="_blank">Terms and Conditions</a> | <a href="footer/disclaimer.jsp" target="_blank">Disclaimer</a> | <a href="faq" target="_blank">FAQ's</a> | <a href="footer/contactus.jsp" target="_blank">Contact Us</a>
+<div style="height:5px"></div>
+ <a href="http://indiapost.gov.in/ePaymentOffices.aspx" target="_blank">List of Post Offices to make payment</a> <br/>
+</div>
+</div>
+	</div>
+</body>
+<script>function showDiv(a){if(a=="2"){document.getElementById("UploadSDiv3").style.display="";document.getElementById("UploadSDiv4").style.display="";document.getElementById("UploadSDiv5").style.display="";document.getElementById("UploadSDiv6").style.display="";document.getElementById("UploadSDiv7").style.display="";document.getElementById("UploadSDiv8").style.display="";document.getElementById("UploadSDiv9").style.display="";document.getElementById("UploadSDiv10").style.display="";document.getElementById("divAll").style.display=""}if(a=="1"){document.getElementById("UploadSDiv3").style.display="none";document.getElementById("UploadSDiv4").style.display="none";document.getElementById("UploadSDiv5").style.display="none";document.getElementById("UploadSDiv6").style.display="none";document.getElementById("UploadSDiv7").style.display="none";document.getElementById("UploadSDiv8").style.display="none";document.getElementById("UploadSDiv9").style.display="none";document.getElementById("UploadSDiv10").style.display="none";document.getElementById("divAll").style.display="none"}if(a=="3"){document.getElementById("UploadSDiv19").style.display="";document.getElementById("UploadSDiv20").style.display="";document.getElementById("UploadSDiv21").style.display="";document.getElementById("UploadSDiv22").style.display="";document.getElementById("UploadSDiv23").style.display="";document.getElementById("UploadSDiv24").style.display="";document.getElementById("UploadSDiv25").style.display="";document.getElementById("UploadSDiv26").style.display="";document.getElementById("UploadSDiv27").style.display="";document.getElementById("UploadSDiv28").style.display="";document.getElementById("divAllRadioCheckbox").style.display=""}if(a=="4"){document.getElementById("UploadSDiv19").style.display="none";document.getElementById("UploadSDiv20").style.display="none";document.getElementById("UploadSDiv21").style.display="none";document.getElementById("UploadSDiv22").style.display="none";document.getElementById("UploadSDiv23").style.display="none";document.getElementById("UploadSDiv24").style.display="none";document.getElementById("UploadSDiv25").style.display="none";document.getElementById("UploadSDiv26").style.display="none";document.getElementById("UploadSDiv27").style.display="none";document.getElementById("UploadSDiv28").style.display="none";document.getElementById("divAllRadioCheckbox").style.display="none"}if(a=="5"){document.getElementById("UploadSDiv31").style.display="";document.getElementById("UploadSDiv32").style.display="";document.getElementById("UploadSDiv33").style.display="";document.getElementById("UploadSDiv34").style.display="";document.getElementById("UploadSDiv35").style.display="";document.getElementById("UploadSDiv36").style.display="";document.getElementById("UploadSDiv37").style.display="";document.getElementById("UploadSDiv38").style.display="";document.getElementById("divAllRadiodd").style.display=""}if(a=="6"){document.getElementById("UploadSDiv31").style.display="none";document.getElementById("UploadSDiv32").style.display="none";document.getElementById("UploadSDiv33").style.display="none";document.getElementById("UploadSDiv34").style.display="none";document.getElementById("UploadSDiv35").style.display="none";document.getElementById("UploadSDiv36").style.display="none";document.getElementById("UploadSDiv37").style.display="none";document.getElementById("UploadSDiv38").style.display="none";document.getElementById("divAllRadiodd").style.display="none"}};</script>
+</html>
+

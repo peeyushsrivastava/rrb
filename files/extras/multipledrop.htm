@@ -1,0 +1,135 @@
+
+<html>
+<head>
+<script LANGUAGE="JavaScript">
+function validation()
+{
+if(document.login.pri1.selectedIndex==0)
+{ alert("Please select PRIORITY 1");
+document.login.pri1.focus();
+return false;
+}
+else {var p1 = document.login.pri1.value;}
+
+if(document.login.pri2.selectedIndex==0)
+{ alert("Please select PRIORITY 2");
+document.login.pri2.focus();
+return false;
+}
+else { var p2 = document.login.pri2.value;}
+
+if(document.login.pri3.selectedIndex==0)
+{ alert("Please select PRIORITY 3");
+document.login.pri3.focus();
+return false;
+}
+else { var p3 = document.login.pri3.value;}
+
+if(document.login.pri4.selectedIndex==0)
+{ alert("Please select PRIORITY 4");
+document.login.pri4.focus();
+return false;
+}
+else { var p4 = document.login.pri4.value;}
+if(document.login.pri5.selectedIndex==0)
+{ alert("Please select PRIORITY 5");
+document.login.pri5.focus();
+return false;
+}
+else { var p5 = document.login.pri5.value;}
+
+if(document.login.pri6.selectedIndex==0)
+{ alert("Please select PRIORITY 6");
+document.login.pri6.focus();
+return false;
+}
+else { var p6 = document.login.pri6.value;}
+
+if ( (p1==p2) || (p1==p3) || (p1==p4) || (p1==p5) || (p1==p6) || (p2==p3) || (p2==p4) || (p2==p5) || (p2==p6) || (p3==p4) || (p3==p5) || (p3==p6) || (p4==p5) || (p4==p6) || (p5==p6) )
+{
+alert("you cannot select same options");
+return false;
+}
+if (p1 < 04)
+{alert ("p1 is less than 04");
+return false;
+}
+
+return true;	
+}
+</script>
+</head>
+<body>
+popup/dropdown validation
+<form name="login" method="post" action="#" onsubmit="javascript : return validation();">
+<select name="pri1" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+</select>
+
+</br>
+<select name="pri2" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+</select>
+
+</br>
+<select name="pri3" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+</select>
+
+</br>
+<select name="pri4" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+</select>
+
+</br>
+<select name="pri5" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+</select>
+
+</br>
+<select name="pri6" class="texta1">
+<option name="00" value="Select">select</option>
+<option name="01" value="01">A</option>
+<option name="02" value="02">B</option>
+<option name="03" value="03">C</option>
+<option name="04" value="04">D</option>
+<option name="05" value="05">E</option>
+<option name="06" value="06">F</option>
+</select>
+
+</br>
+<input type="submit" value="submit">
+
+</form> 
+</body>
+</html>

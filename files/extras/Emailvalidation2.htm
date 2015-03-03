@@ -1,0 +1,40 @@
+<html>
+<head>
+<script type="text/javascript">
+function ValidateContactForm()
+{
+var email = document.ContactForm.Email;
+if (email.value == "")
+{
+window.alert("Please enter a valid e-mail address.");
+email.focus();
+return false;
+}
+if (email.value.indexOf("@", 0) < 0)
+{
+window.alert("Please enter a valid e-mail address.");
+email.focus();
+return false;
+}
+if (email.value.indexOf(".", 0) < 0)
+{
+window.alert("Please enter a valid e-mail address.");
+email.focus();
+return false;
+}
+}
+</script>
+</head>
+<body>
+<form name="ContactForm" method="post" onsubmit="return ValidateContactForm();">
+<tr>
+<td> Email:</td>
+<td><input type="text" name="Email""></td>
+</tr>
+<tr>
+<td></td>
+<td><input type="submit" name="sub" value="Submit"></td>
+</tr>
+</form>
+</body>
+</html>
