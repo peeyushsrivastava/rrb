@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="refresh" content="600; URL=logout_rrb.php" />
 <script src="js/jquery-1.9.1.min.js"></script>
-
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
 
 <!--<link href="styles/style1.css" rel="stylesheet" type="text/css" />
 <link href="styles/form-style.css" rel="stylesheet" type="text/css" />-->
