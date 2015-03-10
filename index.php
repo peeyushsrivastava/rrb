@@ -47,7 +47,7 @@ include("errors/javaerror.php");
       <img src="images/steps.jpg" style="height:300px;" alt="Steps" class=""/> </div>
     <!-- end of col-md-8-->
  <div class="col-md-5 ">
-      <a href="instruct.php" class="btn btn-primary btn-lg btn-block">Click here for NEW APPLICATION</a>
+      <a href="instructions.php" class="btn btn-primary btn-lg btn-block">Click here for NEW APPLICATION</a>
       <h1 class="text-center">Or</h1>
       <h3 class="text-center text-info">Login for your Application</h3>
       <fieldset>
