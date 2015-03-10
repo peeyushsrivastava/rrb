@@ -1,10 +1,10 @@
 <?php 
-include('scripts/conn.php');
-include('scripts/session.php');
-                    
+include_once('scripts/conn.php');
+include_once('scripts/session.php');
+$rowregno=$row['regno']; 
 
 // check if photo and sign already uploaded, if uploaded applicant will be redirected to app-2 page
-if ((file_exists("uploads/".$row['regno']."P.jpg")) && (file_exists("uploads/".$row['regno']."S.jpg")) && (file_exists("uploads/".$row['regno']."A.jpg")))
+if ((file_exists("uploads/{$rowregno}P.jpg")) && (file_exists("uploads/{$rowregno}S.jpg")) && (file_exists("uploads/{$rowregno}A.jpg")))
 {
                 header('location:app-2.php');
 }
@@ -102,23 +102,25 @@ border: 1px solid;
 border-color:#000000;
 margin:auto;
 <?php 
-
-//include('scripts/session.php');
-$rowregno = $row['regno'];
-//this function will show previously uploaded photo
-if (file_exists("uploads/".$rowregno."P.jpg"))
+//this function is because there is no <img> tag in html code therefor i m previewing
+//previously uploaded image using css
+if (file_exists("uploads/{$rowregno}P.jpg"))
 {
-include('scripts/conn.php');
+/*
+ * // enable this code to preview image from database
+ * include_once('scripts/conn.php');
 $result= mysqli_query($con, "select * from picsig where regno='$rowregno'");
 $Pic= mysqli_fetch_array($result);
 mysqli_close($con);
 echo "background-image:url(".$Pic['fnp'].")";
+
+ */
+echo "background-image:url(uploads/{$rowregno}P.jpg);";
 }
 else 
 {
- echo 'background-image:url(images/upload-pho.jpg)'; 
+ echo "background-image:url(images/upload-pho.jpg);"; 
 }
-echo ";";
 ?>
 background-size:110px 120px;
 }
@@ -133,21 +135,25 @@ border-color:#000000;
 margin:auto;
 margin-bottom:70px; /*to match the height of both pannels*/
 <?php 
-$rowregno = $row['regno'];
+//this function is because there is no <img> tag in html code therefor i m previewing
+//previously uploaded image using css
 
-if (file_exists("uploads/".$rowregno."S.jpg"))
+if (file_exists("uploads/{$rowregno}S.jpg"))
 {
-include('scripts/conn.php');
+/*
+ * //enable this section to preview images from database
+ * include_once('scripts/conn.php');
 $result= mysqli_query($con, "select * from picsig where regno='$rowregno'");
 $Pic= mysqli_fetch_array($result);
 mysqli_close($con);
 echo "background-image:url(".$Pic['fns'].")";
+ */
+    echo "background-image:url(uploads/{$rowregno}S.jpg);";
 }
 else 
 {
- echo 'background-image:url(images/upload-sig.jpg)'; 
+ echo "background-image:url(images/upload-sig.jpg);"; 
 }
-echo ";";
 ?>
 background-size:150px 70px;
 }
@@ -164,21 +170,25 @@ border-color:#000000;
 margin:auto;
 margin-bottom:70px; /*to match the height of both pannels*/
 <?php 
-$rowregno = $row['regno'];
-
-if (file_exists("uploads/".$rowregno."A.jpg"))
+//this function is because there is no <img> tag in html code therefor i m previewing
+//previously uploaded image using css
+if (file_exists("uploads/{$rowregno}A.jpg"))
 {
-include('scripts/conn.php');
+/*
+ * //enable this section to preview image from database
+ * include_once('scripts/conn.php');
 $result= mysqli_query($con, "select * from picsig where regno='$rowregno'");
 $Pic= mysqli_fetch_array($result);
 mysqli_close($con);
 echo "background-image:url(".$Pic['fna'].")";
+  
+ */
+    echo "background-image:url(uploads/{$rowregno}A.jpg);";
 }
 else 
 {
- echo 'background-image:url(images/upload-para.jpg)'; 
+ echo "background-image:url(images/upload-para.jpg);"; 
 }
-echo ";";
 ?>
 background-size:550px 250px;
 background-repeat:no-repeat;
@@ -229,7 +239,7 @@ include("errors/javaerror.php");
 <table style="font-size:12px;">
 <tr>
 <td colspan="2">
-<h4 class="text-center">GUIDELINES FOR SCANNING THE PHOTOGRAPH &amp; SIGNATURE</h4>
+<h4 class="text-center">GUIDELINES FOR SCANNING THE PHOTOGRAPH, SIGNATURE &amp; PASSAGE</h4>
 </td>
 </tr>
 <tr>
@@ -242,7 +252,7 @@ include("errors/javaerror.php");
 <ol>
 <li>Photograph must be a recent passport style colour picture.The picture should be in colour, against a light-coloured, preferably white, background. Look straight at the camera with a relaxed face.</li>
 <li>If the picture is taken on a sunny day, have the sun behind you, or place yourself in the shade, so that you are not squinting and there are no harsh shadows.If you have to use flash, ensure there is no "red-eye".If you wear glasses make sure that there are no reflections and your eyes can be clearly seen.</li>
-<li>Caps, hats and dark glasses are not acceptable. Religious headwear is allowed but it must not cover your face. <strong>image file should be JPG or JPEG format.</strong></li>
+<li>Caps, hats and dark glasses are not acceptable. Religious headwear is allowed but it must not cover your face. <strong>image file should be in JPG format only.</strong></li>
 <li>Keep size of photograph minimum as maximum size limit is <strong>100 KB.</strong></li>
 </ol>
 </li>
@@ -250,7 +260,7 @@ include("errors/javaerror.php");
 <ol>
 <li>The applicant has to sign on white paper with Black Ink pen. The signature must be signed only by the applicant and not by any other person. The signature will be used to put on the Hall Ticket and wherever necessary.</li>
 <li>If the Applicant's signature on the answer sheet, at the time of the examination, does not match the signature on the Hall Ticket, the applicant will be disqualified.</li>
-<li><strong>Keep size of Signature minimum as maximum size limit is 50 KB and The image file should be JPG or JPEG format.</strong></li>
+<li><strong>Keep size of Signature minimum as maximum size limit is 50 KB and The image file should be in JPG format only.</strong></li>
 </ol>
 </li>
 
@@ -258,7 +268,7 @@ include("errors/javaerror.php");
 <ol>
 <li>The applicant has to fill the passage on the given format with Black Ink pen. The passage must be filled only by the applicant and not by any other person. </li>
 <li>If the Applicant's handwriting on the answer sheet, at the time of the examination, does not match the passage uploaded, the applicant will be disqualified.</li>
-<li><strong>Keep size of Passage minimum as maximum size limit is 100 KB and The image file should be JPG or JPEG format.</strong></li>
+<li><strong>Keep size of Passage minimum as maximum size limit is 100 KB and The image file should be in JPG format only.</strong></li>
 </ol>
 </li>
 
@@ -282,7 +292,7 @@ include("errors/javaerror.php");
 <div class="form-group">
     <label>Upload your Photo :</label>
 	 <input class="form-control" type="file" name="photoimg" id="photoimg" />
-    <p class="help-block">Only 'jpg' or 'jpeg' is allowed.</p>
+    <p class="help-block">Only "jpg" is allowed.</p>
   </div>
 </form>
 </div><!--end of panel body -->
@@ -300,7 +310,7 @@ include("errors/javaerror.php");
 <div class="form-group">
     <label >Upload your Signature : </label>
 	<input type="file" name="signimg" id="signimg" class="form-control" />
-    <p class="help-block">Only 'jpg' or 'jpeg' is allowed.</p>
+    <p class="help-block">Only "jpg" is allowed.</p>
   </div>
 
 
@@ -322,7 +332,7 @@ include("errors/javaerror.php");
 <div class="form-group">
     <label>Upload your Passage : </label>
 	<input type="file" name="paraimg" id="paraimg" class="form-control" />
-    <p class="help-block">Only 'jpg' or 'jpeg' is allowed.</p>
+    <p class="help-block">Only "jpg" is allowed.</p>
 </div>
 
 
@@ -340,9 +350,5 @@ include("errors/javaerror.php");
 include("footer.php");
 ?>
 </div><!--end of container-->
-<script type="text/javascript">
-disableSelection(document.body);
-</script>
-
 </body>
 </html>

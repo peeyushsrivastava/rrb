@@ -52,7 +52,7 @@ include("errors/javaerror.php");
       <h3 class="text-center text-info">Login for your Application</h3>
       <fieldset>
         <?php echo $regnoErr;?>
-        <form class="form-horizontal" method="post" name="theForm" action="login_rrb.php" onsubmit="javascript: return validateform(theForm);" id="theForm">
+        <form class="form-horizontal" method="post" name="theForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" onsubmit="javascript: return validateform(theForm);" id="theForm">
           <div class="form-group">
             <label for="regno">Registration No.</label>
             <input type="text" class="form-control" id="regno" name="regno" placeholder="Enter Registration No" maxlength="10" onkeypress="return only_numeric(this,event)">
