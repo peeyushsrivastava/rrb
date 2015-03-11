@@ -4,11 +4,6 @@
 <?php
 include('head.php');
 ?>
-
-
-
-
-
 </head>
 <body>
 
@@ -75,7 +70,7 @@ include("errors/javaerror.php");
     <li>Your mobile Number.</li>
   </ol>
 <div class="text-center">
-<a href="index.htm" class="btn btn-primary">Home</a>
+<a href="index.htm" class="btn btn-danger">Quit</a>
 <a href="new-app.php" class="btn btn-primary">Go To Step 2</a>
 </div>
 

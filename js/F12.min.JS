@@ -1,0 +1,1 @@
+document.onkeypress=function(a){a=(a||window.event);if(a.keyCode==123){return false}};document.onmousedown=function(a){a=(a||window.event);if(a.keyCode==123){return false}};document.onkeydown=function(a){a=(a||window.event);if(a.keyCode==123){return false}};
